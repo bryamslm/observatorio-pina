@@ -31,6 +31,14 @@ create table ops.dim_bloque (
   variedad      nvarchar(20)  not null
 );
 
+create table ops.dim_ciclo (
+  ciclo_id       nvarchar(16) not null primary key,
+  cod_bloque     nvarchar(10) not null references ops.dim_bloque,
+  fecha_siembra  date         not null,
+  inicio_cosecha date         not null,
+  completo       bit          not null   -- todo el ciclo cae en el periodo: base de los KPI de costo
+);
+
 create table ops.parametros (
   parametro nvarchar(40)  not null primary key,
   valor     decimal(12,4) not null
@@ -40,6 +48,7 @@ create table ops.parametros (
 create table ops.fact_cosecha (
   fecha             date         not null references ops.dim_fecha,
   cod_bloque        nvarchar(10) not null references ops.dim_bloque,
+  ciclo_id          nvarchar(16) not null references ops.dim_ciclo,
   calibre           int          null,
   cajas_exportables int          not null,
   cajas_rechazo     int          not null
@@ -49,6 +58,7 @@ create table ops.fact_cosecha (
 create table ops.fact_labores (
   fecha                 date          not null references ops.dim_fecha,
   cod_bloque            nvarchar(10)  not null references ops.dim_bloque,
+  ciclo_id              nvarchar(16)  not null references ops.dim_ciclo,
   labor                 nvarchar(40)  not null,
   jornales              decimal(10,1) not null,
   costo_real_crc        decimal(16,0) not null,
@@ -66,25 +76,27 @@ create table ops.fact_ventas (
 );
 GO
 
--- KPI por bloque: productividad, aprovechamiento y costo por caja.
-create view ops.v_kpi_bloque as
+-- KPI por ciclo completo: productividad, aprovechamiento, costo por caja y desviacion.
+create view ops.v_kpi_ciclo as
 with c as (
-  select cod_bloque, sum(cajas_exportables) as exp, sum(cajas_rechazo) as rech
-  from ops.fact_cosecha group by cod_bloque
+  select ciclo_id, sum(cajas_exportables) as exp, sum(cajas_rechazo) as rech
+  from ops.fact_cosecha group by ciclo_id
 ), l as (
-  select cod_bloque, sum(costo_real_crc) as real_crc, sum(costo_presupuesto_crc) as pres_crc
-  from ops.fact_labores group by cod_bloque
+  select ciclo_id, sum(costo_real_crc) as real_crc, sum(costo_presupuesto_crc) as pres_crc
+  from ops.fact_labores group by ciclo_id
 )
-select b.cod_bloque, b.finca, b.ha,
+select ci.ciclo_id, b.cod_bloque, b.finca, b.ha, ci.inicio_cosecha,
        c.exp + c.rech                                            as cajas_totales,
        round((c.exp + c.rech) / b.ha, 0)                         as cajas_por_ha,
        round(100.0 * c.exp / nullif(c.exp + c.rech, 0), 1)       as pct_exportable,
        l.real_crc,
        round(100.0 * (l.real_crc - l.pres_crc) / l.pres_crc, 1) as desviacion_pct,
        round(l.real_crc / nullif(c.exp, 0), 0)                   as costo_crc_por_caja_exp
-from ops.dim_bloque b
-join c on c.cod_bloque = b.cod_bloque
-join l on l.cod_bloque = b.cod_bloque;
+from ops.dim_ciclo ci
+join ops.dim_bloque b on b.cod_bloque = ci.cod_bloque
+join c on c.ciclo_id = ci.ciclo_id
+join l on l.ciclo_id = ci.ciclo_id
+where ci.completo = 1;
 GO
 
 grant select on schema::ops to observatorio_bi;

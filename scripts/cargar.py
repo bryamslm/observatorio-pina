@@ -20,7 +20,7 @@ CLEAN = ROOT / "data" / "clean"
 TABLES = [("dw", t, t) for t in ["dim_anio", "dim_distrito", "dim_pais", "fact_area_pina",
           "fact_cambio_cobertura", "fact_export_cr", "fact_export_mundo", "fact_produccion"]]
 # Operacion simulada: (esquema, tabla, csv)
-TABLES += [("ops", t, f"ops_{t}") for t in ["dim_fecha", "dim_bloque", "fact_cosecha",
+TABLES += [("ops", t, f"ops_{t}") for t in ["dim_fecha", "dim_bloque", "dim_ciclo", "fact_cosecha",
            "fact_labores", "fact_ventas"]] + [("ops", "parametros", "ops_parametros")]
 
 
