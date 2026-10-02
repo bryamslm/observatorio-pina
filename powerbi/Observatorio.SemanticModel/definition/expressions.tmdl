@@ -1,0 +1,11 @@
+/// Servidor SQL Server. Por defecto, el tunel SSH local hacia el servidor del proyecto.
+expression Servidor = "127.0.0.1,14333" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 280eabed-0649-5fa2-a4f3-e39fc764b51a
+
+	annotation PBI_ResultType = Text
+
+expression BaseDatos = "observatorio_pina" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 90799009-2354-5e96-96ce-9283dfd87f18
+
+	annotation PBI_ResultType = Text
+

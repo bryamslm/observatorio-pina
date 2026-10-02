@@ -1,0 +1,36 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Servidor", "BaseDatos", "Año", "Distrito", "País", "Área piña", "Cambio cobertura", "Exportaciones CR", "Exportaciones mundo", "Producción FAO", "Fecha", "Bloque", "Ciclo", "Cosecha", "Labores", "Ventas"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Año
+ref table Distrito
+ref table País
+ref table 'Área piña'
+ref table 'Cambio cobertura'
+ref table 'Exportaciones CR'
+ref table 'Exportaciones mundo'
+ref table 'Producción FAO'
+ref table Fecha
+ref table Bloque
+ref table Ciclo
+ref table Cosecha
+ref table Labores
+ref table Ventas
+ref table Medidas
+ref table DateTableTemplate_52749ad5-f9f2-4857-b451-8ea8f0676560
+ref table LocalDateTable_c0da6402-dd2b-475d-b081-1b8c177027f4
+ref table LocalDateTable_282ffa38-6e17-49a5-b911-28ef6b528617
+ref table LocalDateTable_870bb274-97c8-4312-92cd-d201f303934a
+ref table LocalDateTable_b2bb7d26-94d0-44b7-9b8d-a35b87645e7f
+

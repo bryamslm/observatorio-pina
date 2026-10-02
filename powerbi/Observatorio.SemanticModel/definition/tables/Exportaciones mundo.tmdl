@@ -1,0 +1,54 @@
+table 'Exportaciones mundo'
+	lineageTag: df4ac0cb-2ea7-54b0-952e-5e023ceea308
+
+	column anio
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 89c07862-b05a-5cf8-b65d-0857c063f91b
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_pais
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 30f7bf2b-00c1-547c-9c16-113cba110a8a
+		summarizeBy: none
+		sourceColumn: cod_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column usd
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: f97d0da4-1929-52c9-b1e9-68223c29e88d
+		summarizeBy: none
+		sourceColumn: usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column kg
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 1a1d3797-3e2b-5719-8acc-c283e01b3a2b
+		summarizeBy: none
+		sourceColumn: kg
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Exportaciones mundo' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="fact_export_mundo"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,86 @@
+table 'Cambio cobertura'
+	lineageTag: 8de54cfd-4481-590b-933f-414e12d99f66
+
+	column periodo
+		dataType: string
+		lineageTag: de6119c7-5d74-5fcb-a691-59e55936a686
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column anio_desde
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3d74d508-b61f-5870-8f0c-c2c461120e50
+		summarizeBy: none
+		sourceColumn: anio_desde
+
+		annotation SummarizationSetBy = Automatic
+
+	column anio_hasta
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8fe4ce04-954b-5059-8260-f5bca0751aeb
+		summarizeBy: none
+		sourceColumn: anio_hasta
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_distrito
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 57823f77-6e78-56af-a6f9-db53c9e788c2
+		summarizeBy: none
+		sourceColumn: cod_distrito
+
+		annotation SummarizationSetBy = Automatic
+
+	column cober_desde
+		dataType: string
+		lineageTag: c621b442-b7d2-578f-b370-3da8b0fddb0f
+		summarizeBy: none
+		sourceColumn: cober_desde
+
+		annotation SummarizationSetBy = Automatic
+
+	column cober_hasta
+		dataType: string
+		lineageTag: 731fca8c-9aef-5151-aef7-b74da7f3047d
+		summarizeBy: none
+		sourceColumn: cober_hasta
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_cambio
+		dataType: string
+		lineageTag: 4a2a309b-57c3-5cc3-9af7-81d3f336312e
+		summarizeBy: none
+		sourceColumn: tipo_cambio
+
+		annotation SummarizationSetBy = Automatic
+
+	column ha
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: e082137e-85f6-59e8-a446-b3cd5e37990c
+		summarizeBy: none
+		sourceColumn: ha
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Cambio cobertura' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="fact_cambio_cobertura"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,23 @@
+table Año
+	lineageTag: f8589597-2f1d-52ce-bd0b-bb06b1a06bfe
+
+	column anio
+		dataType: int64
+		formatString: 0
+		lineageTag: b1c9a0fe-b9d5-54a4-bd3f-99d84e484e24
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Año = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="dim_anio"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

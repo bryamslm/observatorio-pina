@@ -1,0 +1,64 @@
+table 'Producción FAO'
+	lineageTag: fdcb44cf-2a05-5ed3-a8ed-593796de811d
+
+	column anio
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3676a9ce-19ee-5236-b309-8f803395dca5
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_pais
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 24855904-8e95-5896-a2f0-779ca1e475a6
+		summarizeBy: none
+		sourceColumn: cod_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_cosechada_ha
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 32603103-7623-5aa1-aac3-a0b1d9fc79b1
+		summarizeBy: none
+		sourceColumn: area_cosechada_ha
+
+		annotation SummarizationSetBy = Automatic
+
+	column produccion_t
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 48c5ee77-7f27-5ab8-a7af-2cca51cab330
+		summarizeBy: none
+		sourceColumn: produccion_t
+
+		annotation SummarizationSetBy = Automatic
+
+	column rendimiento_kg_ha
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 8fc7ba3a-7cd8-5d07-8e06-b6b78a779011
+		summarizeBy: none
+		sourceColumn: rendimiento_kg_ha
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Producción FAO' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="fact_produccion"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

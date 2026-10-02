@@ -1,0 +1,63 @@
+table Bloque
+	lineageTag: 30f07143-6d73-585a-a2f5-5996c40acf7d
+
+	column cod_bloque
+		dataType: string
+		lineageTag: fada5923-565a-5bbe-9019-f3273f2b9203
+		summarizeBy: none
+		sourceColumn: cod_bloque
+
+		annotation SummarizationSetBy = Automatic
+
+	column finca
+		dataType: string
+		lineageTag: 7870d4cb-e166-5836-8478-e0f5f29c6bbf
+		summarizeBy: none
+		sourceColumn: finca
+
+		annotation SummarizationSetBy = Automatic
+
+	column ha
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 04d97b5b-1a3c-5bd1-b787-9962d04a14de
+		summarizeBy: sum
+		sourceColumn: ha
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha_siembra
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: adfeb866-aaaa-5fd1-8ab6-dd4eac0715a0
+		summarizeBy: none
+		sourceColumn: fecha_siembra
+
+		variation Variación
+			isDefault
+			relationship: 0597564f-ea01-4ec7-bed7-3299d13d8f3f
+			defaultHierarchy: LocalDateTable_282ffa38-6e17-49a5-b911-28ef6b528617.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column variedad
+		dataType: string
+		lineageTag: aba2e68a-7531-5bbd-987b-93d8a879baa7
+		summarizeBy: none
+		sourceColumn: variedad
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Bloque = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="ops",Item="dim_bloque"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

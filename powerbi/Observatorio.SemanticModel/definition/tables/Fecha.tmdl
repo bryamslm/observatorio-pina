@@ -1,0 +1,57 @@
+table Fecha
+	lineageTag: db536a43-59d0-5f7f-a359-411c0e0ce789
+
+	column fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6bb018df-573f-509d-b731-0ee4e06bfd71
+		summarizeBy: none
+		sourceColumn: fecha
+
+		variation Variación
+			isDefault
+			relationship: 0b9abfeb-0005-47d8-8039-76c374350898
+			defaultHierarchy: LocalDateTable_c0da6402-dd2b-475d-b081-1b8c177027f4.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column anio
+		dataType: int64
+		formatString: 0
+		lineageTag: ae3b4376-f7f9-5a1b-b868-4a888cbffa4e
+		summarizeBy: sum
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 542a186d-24de-5806-81a5-5a2defeff778
+		summarizeBy: sum
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column semana
+		dataType: int64
+		formatString: 0
+		lineageTag: 49767daf-175e-531e-b788-a9b6aaa0362a
+		summarizeBy: sum
+		sourceColumn: semana
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fecha = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="ops",Item="dim_fecha"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

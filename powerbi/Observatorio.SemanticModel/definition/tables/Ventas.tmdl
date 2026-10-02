@@ -1,0 +1,72 @@
+table Ventas
+	lineageTag: 3c637798-e478-5bec-872e-59b713daab6e
+
+	column fecha
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 7df852f3-7eee-5a42-901e-587ee930815f
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cliente
+		dataType: string
+		lineageTag: 29f459e6-0578-5d4a-bfe5-1ac035ac1789
+		summarizeBy: none
+		sourceColumn: cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_bloque
+		dataType: string
+		isHidden
+		lineageTag: d98681fd-5b95-5ce4-afc6-222d4183e396
+		summarizeBy: none
+		sourceColumn: cod_bloque
+
+		annotation SummarizationSetBy = Automatic
+
+	column calibre
+		dataType: int64
+		formatString: 0
+		lineageTag: e93b2df5-781b-535e-a215-04aa5fbfcf96
+		summarizeBy: none
+		sourceColumn: calibre
+
+		annotation SummarizationSetBy = Automatic
+
+	column cajas
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: 4eb417e4-b586-5e89-9b62-58c0e8bf8994
+		summarizeBy: none
+		sourceColumn: cajas
+
+		annotation SummarizationSetBy = Automatic
+
+	column usd
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: f796882b-f6ce-5e0e-884f-7539a45cf5c9
+		summarizeBy: none
+		sourceColumn: usd
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ventas = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="ops",Item="fact_ventas"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,71 @@
+table Ciclo
+	lineageTag: b0c8f477-c186-5f97-baff-a4ca897000f6
+
+	column ciclo_id
+		dataType: string
+		lineageTag: b656330e-3ae1-56b6-bbac-3ac8d64a3556
+		summarizeBy: none
+		sourceColumn: ciclo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_bloque
+		dataType: string
+		isHidden
+		lineageTag: 672a2d2c-203e-583d-98f1-8043935079fb
+		summarizeBy: none
+		sourceColumn: cod_bloque
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha_siembra
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d73277b0-ea86-583c-aeeb-a3173e98ef75
+		summarizeBy: none
+		sourceColumn: fecha_siembra
+
+		variation Variación
+			isDefault
+			relationship: 85e4b717-2ad4-4ed0-b947-98f14e2f5ea2
+			defaultHierarchy: LocalDateTable_870bb274-97c8-4312-92cd-d201f303934a.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column inicio_cosecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a0d499e0-076a-5cc8-945b-c9688c706966
+		summarizeBy: none
+		sourceColumn: inicio_cosecha
+
+		variation Variación
+			isDefault
+			relationship: 1072bb35-a689-475a-b6b3-c65f742af4cf
+			defaultHierarchy: LocalDateTable_b2bb7d26-94d0-44b7-9b8d-a35b87645e7f.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column completo
+		dataType: boolean
+		lineageTag: 8105ab8f-cdb2-5941-a5a8-443738b05057
+		summarizeBy: none
+		sourceColumn: completo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ciclo = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="ops",Item="dim_ciclo"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

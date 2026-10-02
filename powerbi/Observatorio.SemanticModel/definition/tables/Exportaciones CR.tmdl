@@ -1,0 +1,54 @@
+table 'Exportaciones CR'
+	lineageTag: 94013edf-d478-5055-8034-0a6aae5acdc6
+
+	column anio
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: afda5d60-0358-5a9a-b02f-0a751ff069b3
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_pais
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1db6c9ad-0794-5f7d-bd59-e9f6d136e668
+		summarizeBy: none
+		sourceColumn: cod_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column usd
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 88c11914-35f1-58bf-8250-3d4b58dd5402
+		summarizeBy: none
+		sourceColumn: usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column kg
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 54ac4bca-fe18-50e0-b113-ebf1d319607c
+		summarizeBy: none
+		sourceColumn: kg
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Exportaciones CR' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="fact_export_cr"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

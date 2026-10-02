@@ -1,0 +1,49 @@
+table País
+	lineageTag: 59afb2ec-746d-58d1-bac2-275c1cf921f1
+
+	column cod_pais
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dab2bff3-5c66-5953-8908-884c0627e7b0
+		summarizeBy: none
+		sourceColumn: cod_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		lineageTag: ee18b5f0-b9cb-57d1-b420-da6b025800d0
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso3
+		dataType: string
+		lineageTag: 7424f399-99e1-5339-8f98-f5284d0b074a
+		summarizeBy: none
+		sourceColumn: iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column es_agregado
+		dataType: boolean
+		isHidden
+		lineageTag: 5966c9ed-a393-5d1a-986e-1009f989ea98
+		summarizeBy: none
+		sourceColumn: es_agregado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition País = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="dim_pais"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

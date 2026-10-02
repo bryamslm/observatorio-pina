@@ -1,0 +1,86 @@
+table Distrito
+	lineageTag: 5cd6dd21-5445-5895-a44a-a02204659739
+
+	column cod_distrito
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 337760d6-c4fc-5e88-8ede-007a4de6dbf0
+		summarizeBy: none
+		sourceColumn: cod_distrito
+
+		annotation SummarizationSetBy = Automatic
+
+	column provincia
+		dataType: string
+		lineageTag: b6c44822-c8ad-5068-8bc2-4d6c895af27e
+		summarizeBy: none
+		sourceColumn: provincia
+
+		annotation SummarizationSetBy = Automatic
+
+	column canton
+		dataType: string
+		lineageTag: 6b7fb9eb-e089-596a-bf0c-f539d57e6e6d
+		summarizeBy: none
+		sourceColumn: canton
+
+		annotation SummarizationSetBy = Automatic
+
+	column distrito
+		dataType: string
+		lineageTag: 97452885-7edd-5e18-b62f-a5e7fa392139
+		summarizeBy: none
+		sourceColumn: distrito
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_canton
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 837ef653-7052-5611-8a9a-789d3c239182
+		summarizeBy: none
+		sourceColumn: cod_canton
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_provincia
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9942ced2-2032-5876-bb6f-c87467d105da
+		summarizeBy: none
+		sourceColumn: cod_provincia
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 24c7e4ee-816d-50ff-b6c0-2183a1c437ae
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_distrito_ha
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: c3b4e202-73a9-5de8-b74d-6b3717823ce2
+		summarizeBy: none
+		sourceColumn: area_distrito_ha
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Distrito = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="dim_distrito"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

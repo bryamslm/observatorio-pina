@@ -1,0 +1,73 @@
+table Cosecha
+	lineageTag: f62ff820-5272-5af8-8fdd-3dea9ef46d6f
+
+	column fecha
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 477f1775-e255-5683-9845-116ed24b06ca
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cod_bloque
+		dataType: string
+		isHidden
+		lineageTag: 30329276-5721-5797-beed-63f4db5e0ca9
+		summarizeBy: none
+		sourceColumn: cod_bloque
+
+		annotation SummarizationSetBy = Automatic
+
+	column ciclo_id
+		dataType: string
+		isHidden
+		lineageTag: 888f21da-db4f-50c1-974f-7256c6a7eb25
+		summarizeBy: none
+		sourceColumn: ciclo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column calibre
+		dataType: int64
+		formatString: 0
+		lineageTag: e5146dfd-d9e7-5768-8384-fe9d60935d25
+		summarizeBy: none
+		sourceColumn: calibre
+
+		annotation SummarizationSetBy = Automatic
+
+	column cajas_exportables
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: eb27048e-0ac0-59b4-b123-6c9e6c8f2bd5
+		summarizeBy: none
+		sourceColumn: cajas_exportables
+
+		annotation SummarizationSetBy = Automatic
+
+	column cajas_rechazo
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: ad2f6b44-86c1-55eb-8db3-84445e976c7b
+		summarizeBy: none
+		sourceColumn: cajas_rechazo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Cosecha = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="ops",Item="fact_cosecha"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

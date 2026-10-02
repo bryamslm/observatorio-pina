@@ -1,0 +1,275 @@
+/// Todas las medidas del reporte, agrupadas por pagina en carpetas.
+table Medidas
+	lineageTag: cb5199c1-bf2c-543a-b4df-99f16a85ab43
+
+	/// Valor FOB exportado por Costa Rica (HS 080430), UN Comtrade.
+	measure 'Exportaciones USD' = SUM('Exportaciones CR'[usd])
+		formatString: $#,0
+		displayFolder: Mercado
+		lineageTag: 1a36e4ad-0b25-5765-9489-ead1aa28c22b
+
+	/// Exportaciones del año más reciente dentro del filtro.
+	measure 'Exportaciones USD (último año)' =
+			VAR y = CALCULATE(MAX('Exportaciones CR'[anio]), REMOVEFILTERS('País'))
+			RETURN CALCULATE([Exportaciones USD], 'Exportaciones CR'[anio] = y)
+		formatString: $#,0
+		displayFolder: Mercado
+		lineageTag: f6dca50b-c66c-5e77-bc62-43fe324a5b95
+
+	/// Toneladas exportadas. Excluye 2024: Comtrade reporta casi el doble del volumen de 2023.
+	measure 'Exportaciones t' = CALCULATE(DIVIDE(SUM('Exportaciones CR'[kg]), 1000), KEEPFILTERS('Año'[anio] <> 2024))
+		formatString: #,0
+		displayFolder: Mercado
+		lineageTag: 317cf712-12c0-5ebb-9de1-382d98bf5de6
+
+	/// Precio implícito FOB. Excluye 2024 por la anomalía de volumen.
+	measure 'Precio USD/kg' = CALCULATE(DIVIDE(SUM('Exportaciones CR'[usd]), SUM('Exportaciones CR'[kg])), KEEPFILTERS('Año'[anio] <> 2024))
+		formatString: $0.000
+		displayFolder: Mercado
+		lineageTag: 522878e7-2f46-556f-9d2c-3180a96ee261
+
+	/// Precio implícito llevado a la caja estándar de exportación.
+	measure 'Precio USD por caja de 12 kg' = [Precio USD/kg] * 12
+		formatString: $0.00
+		displayFolder: Mercado
+		lineageTag: f05fc206-3b0d-5506-8d6b-71247565dab0
+
+	/// Último año con datos contra el anterior (no suma años).
+	measure 'Var % exportaciones a/a' =
+			VAR y = CALCULATE(MAX('Exportaciones CR'[anio]), REMOVEFILTERS('País'))
+			VAR actual = CALCULATE([Exportaciones USD], 'Año'[anio] = y)
+			VAR prev = CALCULATE([Exportaciones USD], 'Año'[anio] = y - 1)
+			RETURN DIVIDE(actual - prev, prev)
+		formatString: 0.0%
+		displayFolder: Mercado
+		lineageTag: 0d32abf6-3fcf-55b4-98c1-a27ee6173bf7
+
+	/// Peso de cada país de destino en el total exportado.
+	measure 'Cuota del destino %' = DIVIDE([Exportaciones USD], CALCULATE([Exportaciones USD], REMOVEFILTERS('País')))
+		formatString: 0.0%
+		displayFolder: Mercado
+		lineageTag: b0562bdc-7c6d-557d-aa99-f9650be21d49
+
+	/// Exportaciones de cada país al mundo (sin agregados regionales).
+	measure 'Exportaciones mundo USD' = CALCULATE(SUM('Exportaciones mundo'[usd]), 'País'[es_agregado] = FALSE(), KEEPFILTERS('Año'[anio] <= 2024))
+		formatString: $#,0
+		displayFolder: Mercado
+		lineageTag: 90412fda-9bce-5af9-9cd9-07b73a1dd283
+
+	/// Participación de Costa Rica en las exportaciones mundiales de piña.
+	measure 'Cuota mundial CR %' =
+			DIVIDE(CALCULATE([Exportaciones mundo USD], 'País'[cod_pais] = 188),
+			       CALCULATE([Exportaciones mundo USD], REMOVEFILTERS('País')))
+		formatString: 0.0%
+		displayFolder: Mercado
+		lineageTag: b09069cc-9996-53ac-8169-9f540a17d52a
+
+	/// Área de piña de la medición más reciente dentro del filtro (MOCUPP). No suma años.
+	measure 'Hectáreas de piña' =
+			VAR y = CALCULATE(MAX('Área piña'[anio]), REMOVEFILTERS('Distrito'))
+			RETURN CALCULATE(SUM('Área piña'[ha]), 'Área piña'[anio] = y)
+		formatString: #,0
+		displayFolder: Territorio
+		lineageTag: 683999a4-0bd2-5610-86fb-8601e6d73019
+
+	/// Peso de la región Huetar Norte en el área nacional de piña.
+	measure 'Participación Huetar Norte %' =
+			DIVIDE(CALCULATE([Hectáreas de piña], 'Distrito'[region] = "Huetar Norte"),
+			       CALCULATE([Hectáreas de piña], REMOVEFILTERS('Distrito')))
+		formatString: 0.0%
+		displayFolder: Territorio
+		lineageTag: 69afa373-be0e-500e-a491-d64ed1e11027
+
+	/// Hectáreas ganadas entre la primera y la última medición de MOCUPP.
+	measure 'Crecimiento ha 2000-2019' =
+			CALCULATE(SUM('Área piña'[ha]), 'Área piña'[anio] = 2019)
+			  - CALCULATE(SUM('Área piña'[ha]), 'Área piña'[anio] = 2000)
+		formatString: #,0
+		displayFolder: Territorio
+		lineageTag: de8868e9-9fc4-5d87-8b00-64a9be9c27d7
+
+	/// Proporción del territorio del distrito cubierta por piña.
+	measure '% del distrito sembrado' = DIVIDE([Hectáreas de piña], SUM('Distrito'[area_distrito_ha]))
+		formatString: 0.0%
+		displayFolder: Territorio
+		lineageTag: 5f45f690-ccec-5342-9d84-afda7dad769c
+
+	/// Cobertura arbórea convertida a piña en el periodo (MOCUPP).
+	measure 'Ha pérdida de bosque' = CALCULATE(SUM('Cambio cobertura'[ha]), 'Cambio cobertura'[tipo_cambio] = "perdida_cobertura_arborea")
+		formatString: #,0
+		displayFolder: Sostenibilidad
+		lineageTag: a05a32f1-e3e1-5880-bfff-172344f285ec
+
+	/// Piña sobre terreno que ya era productivo: sin pérdida de bosque.
+	measure 'Ha sin cambio' = CALCULATE(SUM('Cambio cobertura'[ha]), 'Cambio cobertura'[tipo_cambio] = "sin_cambio")
+		formatString: #,0
+		displayFolder: Sostenibilidad
+		lineageTag: 0b2141ae-727c-561d-9498-9c551edbb6ae
+
+	/// Pérdida de bosque del periodo más reciente dentro del filtro.
+	measure 'Pérdida último periodo (ha)' =
+			VAR y = CALCULATE(MAX('Cambio cobertura'[anio_hasta]), REMOVEFILTERS('Distrito'))
+			RETURN CALCULATE([Ha pérdida de bosque], 'Cambio cobertura'[anio_hasta] = y)
+		formatString: #,0
+		displayFolder: Sostenibilidad
+		lineageTag: c1da3dd6-17d1-588d-a48b-3ae6d9a3f7d3
+
+	/// Proporción del área analizada donde hubo pérdida de bosque.
+	measure '% del área con pérdida' = DIVIDE([Ha pérdida de bosque], SUM('Cambio cobertura'[ha]))
+		formatString: 0.00%
+		displayFolder: Sostenibilidad
+		lineageTag: e28cb4d9-5007-5f70-a29e-05fd4c92f76a
+
+	/// Producción de piña (FAOSTAT), solo países.
+	measure 'Producción t' = CALCULATE(SUM('Producción FAO'[produccion_t]), 'País'[es_agregado] = FALSE())
+		formatString: #,0
+		displayFolder: Productividad
+		lineageTag: a4d41695-3064-5a7d-a0c3-fc9725ec75cc
+
+	/// Área cosechada (FAOSTAT), solo países.
+	measure 'Área cosechada ha' = CALCULATE(SUM('Producción FAO'[area_cosechada_ha]), 'País'[es_agregado] = FALSE())
+		formatString: #,0
+		displayFolder: Productividad
+		lineageTag: f056500b-e7d9-5890-bddf-f1e696b751aa
+
+	/// Toneladas por hectárea cosechada.
+	measure 'Rendimiento t/ha' = DIVIDE([Producción t], [Área cosechada ha])
+		formatString: #,0.0
+		displayFolder: Productividad
+		lineageTag: 8a59a86f-b064-54f0-b31d-a4716c1db971
+
+	/// Rendimiento de Costa Rica.
+	measure 'Rendimiento CR t/ha' = CALCULATE([Rendimiento t/ha], 'País'[cod_pais] = 188)
+		formatString: #,0.0
+		displayFolder: Productividad
+		lineageTag: 7f86ed78-b499-5a80-9d28-2f18db0c8264
+
+	/// Rendimiento promedio ponderado de todos los productores.
+	measure 'Rendimiento mundial t/ha' = CALCULATE([Rendimiento t/ha], REMOVEFILTERS('País'))
+		formatString: #,0.0
+		displayFolder: Productividad
+		lineageTag: c9ac3c5f-04c6-5228-bd03-7fa1423278e2
+
+	/// Rendimiento de Costa Rica en el último año disponible.
+	measure 'Rendimiento CR t/ha (último año)' =
+			VAR y = CALCULATE(MAX('Producción FAO'[anio]), REMOVEFILTERS('País'))
+			RETURN CALCULATE([Rendimiento CR t/ha], 'Producción FAO'[anio] = y)
+		formatString: #,0.0
+		displayFolder: Productividad
+		lineageTag: 0ea8192a-8439-5788-8699-ac7f605d19a5
+
+	/// Rendimiento mundial en el último año disponible.
+	measure 'Rendimiento mundial t/ha (último año)' =
+			VAR y = CALCULATE(MAX('Producción FAO'[anio]), REMOVEFILTERS('País'))
+			RETURN CALCULATE([Rendimiento mundial t/ha], 'Producción FAO'[anio] = y)
+		formatString: #,0.0
+		displayFolder: Productividad
+		lineageTag: 098ba917-3591-5ea1-99c0-8ad327b16235
+
+	/// Producción del año más reciente disponible en FAOSTAT.
+	measure 'Producción t (último año)' =
+			VAR y = CALCULATE(MAX('Producción FAO'[anio]), REMOVEFILTERS('País'))
+			RETURN CALCULATE([Producción t], 'Producción FAO'[anio] = y)
+		formatString: #,0
+		displayFolder: Productividad
+		lineageTag: 089d9587-bfc2-5b5d-8b92-75d0d12fac76
+
+	/// Producción de Costa Rica en el último año disponible.
+	measure 'Producción CR t (último año)' = CALCULATE([Producción t (último año)], 'País'[cod_pais] = 188)
+		formatString: #,0
+		displayFolder: Productividad
+		lineageTag: 85af729f-5ef6-5026-8b16-f639954fb618
+
+	/// DATOS SIMULADOS. Cajas de 12 kg aptas para exportación.
+	measure 'Cajas exportables' = SUM('Cosecha'[cajas_exportables])
+		formatString: #,0
+		displayFolder: Operación (simulada)
+		lineageTag: 40e3659c-cdd1-591d-9e03-6692be133b0f
+
+	/// DATOS SIMULADOS. Exportables más rechazo.
+	measure 'Cajas totales' = SUM('Cosecha'[cajas_exportables]) + SUM('Cosecha'[cajas_rechazo])
+		formatString: #,0
+		displayFolder: Operación (simulada)
+		lineageTag: aabcec71-0c29-5ed1-8d3f-d1379adca1e4
+
+	/// DATOS SIMULADOS. Aprovechamiento de la fruta cosechada.
+	measure '% exportable' = DIVIDE([Cajas exportables], [Cajas totales])
+		formatString: 0.0%
+		displayFolder: Operación (simulada)
+		lineageTag: a2d60826-72b2-54d6-8664-bbd9ff229177
+
+	/// DATOS SIMULADOS. Productividad promedio de los ciclos completos.
+	measure 'Cajas por ha por ciclo' =
+			AVERAGEX(
+			    FILTER('Ciclo', 'Ciclo'[completo]),
+			    DIVIDE(CALCULATE([Cajas totales]),
+			           LOOKUPVALUE('Bloque'[ha], 'Bloque'[cod_bloque], 'Ciclo'[cod_bloque])))
+		formatString: #,0
+		displayFolder: Operación (simulada)
+		lineageTag: d4e930e5-94a0-52f2-8085-d4c5cd9a580a
+
+	/// DATOS SIMULADOS. Costo de campo registrado por labor.
+	measure 'Costo real CRC' = SUM('Labores'[costo_real_crc])
+		formatString: ₡#,0
+		displayFolder: Operación (simulada)
+		lineageTag: 1049e303-73e6-5e9c-8fc1-6bd6712968dd
+
+	/// DATOS SIMULADOS. Costo de campo presupuestado.
+	measure 'Costo presupuesto CRC' = SUM('Labores'[costo_presupuesto_crc])
+		formatString: ₡#,0
+		displayFolder: Operación (simulada)
+		lineageTag: 97887c68-ac22-5e4e-b418-1112596e4256
+
+	/// DATOS SIMULADOS. Positivo = sobrecosto.
+	measure 'Desviación vs presupuesto %' = DIVIDE([Costo real CRC] - [Costo presupuesto CRC], [Costo presupuesto CRC])
+		formatString: 0.0%
+		displayFolder: Operación (simulada)
+		lineageTag: 9154d041-abd4-5483-b939-b92a1407aadf
+
+	/// DATOS SIMULADOS. Costo de campo por caja, solo ciclos completos (sin empaque ni flete).
+	measure 'Costo por caja exportable CRC' =
+			DIVIDE(CALCULATE([Costo real CRC], 'Ciclo'[completo] = TRUE()),
+			       CALCULATE([Cajas exportables], 'Ciclo'[completo] = TRUE()))
+		formatString: ₡#,0
+		displayFolder: Operación (simulada)
+		lineageTag: 420c7510-b206-5799-9e33-014718b04172
+
+	/// DATOS SIMULADOS.
+	measure 'Ventas USD' = SUM('Ventas'[usd])
+		formatString: $#,0
+		displayFolder: Operación (simulada)
+		lineageTag: e891ecf6-3e95-5fad-a01f-c5497c82d904
+
+	/// DATOS SIMULADOS. Calibrado con el precio implícito real de Comtrade 2023.
+	measure 'Precio promedio USD/caja' = DIVIDE([Ventas USD], SUM('Ventas'[cajas]))
+		formatString: $0.00
+		displayFolder: Operación (simulada)
+		lineageTag: 2a718490-10ae-545c-9e88-f7d20d7eb0d1
+
+	/// Supuesto fijo de la simulación.
+	measure 'Tipo de cambio CRC/USD' = 505
+		formatString: 0
+		displayFolder: Operación (simulada)
+		lineageTag: 03e4c788-21f6-5be3-8be2-e764ec4cd0da
+
+	/// DATOS SIMULADOS. Precio menos costo de campo; no incluye empaque, flete ni indirectos.
+	measure 'Margen de campo USD/caja' = [Precio promedio USD/caja] - DIVIDE([Costo por caja exportable CRC], [Tipo de cambio CRC/USD])
+		formatString: $0.00
+		displayFolder: Operación (simulada)
+		lineageTag: a859a61d-3c60-5775-bdde-7ea6fa529fc9
+
+	column _
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: af30149e-69d6-5dfe-aa92-5e238eda4ca5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [_]
+
+	partition Medidas = calculated
+		mode: import
+		source = ROW("_", 0)
+
+	annotation PBI_Id = medidas
+

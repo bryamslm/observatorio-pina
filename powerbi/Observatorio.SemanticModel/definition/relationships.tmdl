@@ -1,0 +1,92 @@
+relationship c83bf675-3cf4-5c8b-ac6d-5b4bce1a81c4
+	fromColumn: 'Área piña'.anio
+	toColumn: Año.anio
+
+relationship 2db112b0-4731-5e4b-8ed9-df789f74f22e
+	fromColumn: 'Área piña'.cod_distrito
+	toColumn: Distrito.cod_distrito
+
+relationship a3e328b0-e2b0-5d35-9f01-608e0a454bf8
+	fromColumn: 'Cambio cobertura'.cod_distrito
+	toColumn: Distrito.cod_distrito
+
+relationship e1a327af-fb33-52c9-aaf7-97fe096e889c
+	fromColumn: 'Cambio cobertura'.anio_hasta
+	toColumn: Año.anio
+
+relationship ad0304f3-f248-5395-9d7b-3c95f9587841
+	fromColumn: 'Exportaciones CR'.anio
+	toColumn: Año.anio
+
+relationship 01092464-5231-5033-9784-a4d3829a6b54
+	fromColumn: 'Exportaciones CR'.cod_pais
+	toColumn: País.cod_pais
+
+relationship d643edce-b3d3-5662-85ed-3887960ac389
+	fromColumn: 'Exportaciones mundo'.anio
+	toColumn: Año.anio
+
+relationship 54a3e911-c43f-5a83-b212-1f47bd7f469f
+	fromColumn: 'Exportaciones mundo'.cod_pais
+	toColumn: País.cod_pais
+
+relationship a3e017d3-9dc3-505d-b97d-4a1d0683ecc6
+	fromColumn: 'Producción FAO'.anio
+	toColumn: Año.anio
+
+relationship 6d0d6a41-0faa-5f29-bb04-71c5d560e2ab
+	fromColumn: 'Producción FAO'.cod_pais
+	toColumn: País.cod_pais
+
+relationship bc215707-9d35-5bfe-b891-ec4ca5d76d9b
+	fromColumn: Cosecha.fecha
+	toColumn: Fecha.fecha
+
+relationship b1756fb0-c172-5ca1-bfed-34ea5d0f494c
+	fromColumn: Cosecha.cod_bloque
+	toColumn: Bloque.cod_bloque
+
+relationship 0972c3d9-46c6-5016-bb41-b5afc987e051
+	fromColumn: Cosecha.ciclo_id
+	toColumn: Ciclo.ciclo_id
+
+relationship 30c42728-357a-5a02-bc9d-4affa1df95ff
+	fromColumn: Labores.fecha
+	toColumn: Fecha.fecha
+
+relationship 4e709ef3-ea48-5504-8d99-47bb8f2d7358
+	fromColumn: Labores.cod_bloque
+	toColumn: Bloque.cod_bloque
+
+relationship 04b4ce8c-902b-51ab-9ee8-208a9b944a5c
+	fromColumn: Labores.ciclo_id
+	toColumn: Ciclo.ciclo_id
+
+relationship b483edb5-8191-5608-aec6-d554bbcf776d
+	fromColumn: Ventas.fecha
+	toColumn: Fecha.fecha
+
+relationship 84f54e4c-77f1-5045-83e6-890e04152fb2
+	fromColumn: Ventas.cod_bloque
+	toColumn: Bloque.cod_bloque
+
+relationship 0b9abfeb-0005-47d8-8039-76c374350898
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fecha.fecha
+	toColumn: LocalDateTable_c0da6402-dd2b-475d-b081-1b8c177027f4.Date
+
+relationship 0597564f-ea01-4ec7-bed7-3299d13d8f3f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Bloque.fecha_siembra
+	toColumn: LocalDateTable_282ffa38-6e17-49a5-b911-28ef6b528617.Date
+
+relationship 85e4b717-2ad4-4ed0-b947-98f14e2f5ea2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ciclo.fecha_siembra
+	toColumn: LocalDateTable_870bb274-97c8-4312-92cd-d201f303934a.Date
+
+relationship 1072bb35-a689-475a-b6b3-c65f742af4cf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ciclo.inicio_cosecha
+	toColumn: LocalDateTable_b2bb7d26-94d0-44b7-9b8d-a35b87645e7f.Date
+

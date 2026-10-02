@@ -1,0 +1,44 @@
+table 'Área piña'
+	lineageTag: 16c39771-3894-5b47-916c-4d02fde87616
+
+	column anio
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a2546426-7fae-523e-832e-94ed4635519e
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_distrito
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3eebc731-ea11-5129-b6b7-451e243eadba
+		summarizeBy: none
+		sourceColumn: cod_distrito
+
+		annotation SummarizationSetBy = Automatic
+
+	column ha
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 6cd7d0f6-f2ad-5536-9bd6-c2c7f61d0fff
+		summarizeBy: none
+		sourceColumn: ha
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Área piña' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="dw",Item="fact_area_pina"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+

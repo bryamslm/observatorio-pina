@@ -1,0 +1,19 @@
+{
+  "name": "Observatorio piña",
+  "dataColors": [
+    "#1F5C2E",
+    "#E3A21A",
+    "#5E8C61",
+    "#B5651D",
+    "#2E7D6B",
+    "#C9B458",
+    "#7A5C3E",
+    "#8FB996"
+  ],
+  "background": "#FBFAF5",
+  "foreground": "#1D2B22",
+  "tableAccent": "#1F5C2E",
+  "maximum": "#1F5C2E",
+  "center": "#E3A21A",
+  "minimum": "#F3EFE0"
+}

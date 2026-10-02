@@ -116,6 +116,8 @@ def build_comtrade() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     countries = pd.DataFrame(ref)[["PartnerCode", "PartnerDesc", "PartnerCodeIsoAlpha3"]]
     countries.columns = ["cod_pais", "pais", "iso3"]
     countries = countries.drop_duplicates("cod_pais")
+    # Comtrade conserva nombres historicos ("India (...1974)") en codigos que FAO usa hoy.
+    countries["pais"] = countries["pais"].str.replace(r"\s*\(\.\.\.\d{4}\)", "", regex=True)
 
     def load(prefix: str) -> pd.DataFrame:
         frames = [pd.DataFrame(json.loads(p.read_text(encoding="utf-8")))

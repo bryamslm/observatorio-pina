@@ -61,7 +61,7 @@ cod_pais,pais,iso3,es_agregado
 233,Estonia,EST,0
 748,Eswatini,SWZ,0
 231,Ethiopia,ETH,0
-230,Ethiopia (...1992),ETH,0
+230,Ethiopia,ETH,0
 242,Fiji,FJI,0
 246,Finland,FIN,0
 251,France,FRA,0
@@ -85,7 +85,7 @@ cod_pais,pais,iso3,es_agregado
 348,Hungary,HUN,0
 352,Iceland,ISL,0
 699,India,IND,0
-356,India (...1974),IND,0
+356,India,IND,0
 360,Indonesia,IDN,0
 364,Iran,IRN,0
 372,Ireland,IRL,0
@@ -122,7 +122,7 @@ cod_pais,pais,iso3,es_agregado
 516,Namibia,NAM,0
 524,Nepal,NPL,0
 528,Netherlands,NLD,0
-530,Netherlands Antilles (...2010),ANT,0
+530,Netherlands Antilles,ANT,0
 540,New Caledonia,NCL,0
 554,New Zealand,NZL,0
 558,Nicaragua,NIC,0
@@ -157,7 +157,7 @@ cod_pais,pais,iso3,es_agregado
 682,Saudi Arabia,SAU,0
 686,Senegal,SEN,0
 688,Serbia,SRB,0
-891,Serbia and Montenegro (...2005),SCG,0
+891,Serbia and Montenegro,SCG,0
 690,Seychelles,SYC,0
 702,Singapore,SGP,0
 703,Slovakia,SVK,0
@@ -169,7 +169,7 @@ cod_pais,pais,iso3,es_agregado
 144,Sri Lanka,LKA,0
 275,State of Palestine,PSE,0
 729,Sudan,SDN,0
-736,Sudan (...2011),SDN,0
+736,Sudan,SDN,0
 740,Suriname,SUR,0
 752,Sweden,SWE,0
 757,Switzerland,CHE,0

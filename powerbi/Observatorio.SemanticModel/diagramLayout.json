@@ -1,0 +1,217 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2577.0389151145337,
+            "y": 208.83060004318008
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "cb5199c1-bf2c-543a-b4df-99f16a85ab43",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 624.116888396268,
+            "y": 318.65850488173345
+          },
+          "nodeIndex": "Año",
+          "nodeLineageTag": "f8589597-2f1d-52ce-bd0b-bb06b1a06bfe",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337.01682718924712,
+            "y": 174.81399828886953
+          },
+          "nodeIndex": "Área piña",
+          "nodeLineageTag": "16c39771-3894-5b47-916c-4d02fde87616",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2055.9970921618906,
+            "y": 299.843851545804
+          },
+          "nodeIndex": "Bloque",
+          "nodeLineageTag": "30f07143-6d73-585a-a2f5-5996c40acf7d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337.05231518265913,
+            "y": 395.66120008636028
+          },
+          "nodeIndex": "Cambio cobertura",
+          "nodeLineageTag": "8de54cfd-4481-590b-933f-414e12d99f66",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1482.1545630594753,
+            "y": 171.82887523643467
+          },
+          "nodeIndex": "Ciclo",
+          "nodeLineageTag": "b0c8f477-c186-5f97-baff-a4ca897000f6",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1769.1915361269935,
+            "y": 46.53160007659767
+          },
+          "nodeIndex": "Cosecha",
+          "nodeLineageTag": "f62ff820-5272-5af8-8fdd-3dea9ef46d6f",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 330.88305759222743
+          },
+          "nodeIndex": "Distrito",
+          "nodeLineageTag": "5cd6dd21-5445-5895-a44a-a02204659739",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 911.2307530596546,
+            "y": 458.08402440104794
+          },
+          "nodeIndex": "Exportaciones CR",
+          "nodeLineageTag": "94013edf-d478-5055-8034-0a6aae5acdc6",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 911.138999154708,
+            "y": -50
+          },
+          "nodeIndex": "Exportaciones mundo",
+          "nodeLineageTag": "df4ac0cb-2ea7-54b0-952e-5e023ceea308",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2055.9970816075288,
+            "y": 68.12074957637833
+          },
+          "nodeIndex": "Fecha",
+          "nodeLineageTag": "db536a43-59d0-5f7f-a359-411c0e0ce789",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1769.1857923482655,
+            "y": 323.12960000976256
+          },
+          "nodeIndex": "Labores",
+          "nodeLineageTag": "87e16cb1-e837-5841-9136-b85c779637c4",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1198.1545630594753,
+            "y": 143.83302243078458
+          },
+          "nodeIndex": "País",
+          "nodeLineageTag": "59afb2ec-746d-58d1-bac2-275c1cf921f1",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 911.16225587190979,
+            "y": 206.40127842013311
+          },
+          "nodeIndex": "Producción FAO",
+          "nodeLineageTag": "fdcb44cf-2a05-5ed3-a8ed-593796de811d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2343.0389151145337,
+            "y": 178.79810072839786
+          },
+          "nodeIndex": "Ventas",
+          "nodeLineageTag": "3c637798-e478-5bec-872e-59b713daab6e",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

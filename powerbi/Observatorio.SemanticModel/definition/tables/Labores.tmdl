@@ -1,0 +1,82 @@
+table Labores
+	lineageTag: 87e16cb1-e837-5841-9136-b85c779637c4
+
+	column fecha
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: ffe21b86-2e6d-5fbd-923a-1f829575265e
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cod_bloque
+		dataType: string
+		isHidden
+		lineageTag: b47044c0-cf45-55b0-a9e9-400ce7a2d76f
+		summarizeBy: none
+		sourceColumn: cod_bloque
+
+		annotation SummarizationSetBy = Automatic
+
+	column ciclo_id
+		dataType: string
+		isHidden
+		lineageTag: 81e9d2a8-2eac-5f30-b4a6-5fc48a0cc6a3
+		summarizeBy: none
+		sourceColumn: ciclo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column labor
+		dataType: string
+		lineageTag: 6c585700-91b4-5115-a9ab-ecfce45f4909
+		summarizeBy: none
+		sourceColumn: labor
+
+		annotation SummarizationSetBy = Automatic
+
+	column jornales
+		dataType: double
+		isHidden
+		formatString: #,0.0
+		lineageTag: 7154cd96-491f-5854-8250-0f8c0697385e
+		summarizeBy: none
+		sourceColumn: jornales
+
+		annotation SummarizationSetBy = Automatic
+
+	column costo_real_crc
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 0d60c0a3-ea29-57c2-9c0e-2182e709c466
+		summarizeBy: none
+		sourceColumn: costo_real_crc
+
+		annotation SummarizationSetBy = Automatic
+
+	column costo_presupuesto_crc
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 017a2f4d-31e1-52d6-b33a-e65a4d2e905e
+		summarizeBy: none
+		sourceColumn: costo_presupuesto_crc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Labores = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(Servidor, BaseDatos),
+				    Tabla = Source{[Schema="ops",Item="fact_labores"]}[Data]
+				in
+				    Tabla
+
+	annotation PBI_ResultType = Table
+
