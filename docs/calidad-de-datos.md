@@ -13,3 +13,8 @@
    `sin_cambio`, `otros_cambios`.
 5. **Comtrade 2025** sin datos para Costa Rica todavía (0 filas); el mundo trae 89 reportantes
    parciales. No se usa 2025 en comparaciones anuales.
+6. **Peso de 2024 en Comtrade no es creíble.** Costa Rica reporta 4.047 mil t exportadas en 2024
+   contra 2.114 mil t en 2023, con un valor que solo sube 16 % (USD 1.176 M → 1.363 M). El precio
+   implícito cae de 0,556 a 0,337 USD/kg. Es casi el doble de volumen sin respaldo en producción
+   (FAOSTAT 2024: 3,12 M t), así que se trata como error de registro: el kg de 2024 se marca y no
+   se usa para USD/kg. Pendiente contrastar con el portal de PROCOMER.
