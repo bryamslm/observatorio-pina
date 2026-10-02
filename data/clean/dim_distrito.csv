@@ -1,0 +1,495 @@
+cod_distrito,provincia,canton,distrito,cod_canton,cod_provincia,region,area_distrito_ha
+60103,Puntarenas,Puntarenas,Chomes,601,6,Pacífico Central,11946.478980849319
+50703,Guanacaste,Abangares,San Juan,507,5,Chorotega,10747.233367142548
+60105,Puntarenas,Puntarenas,Paquera,601,6,Pacífico Central,33564.26367529965
+60111,Puntarenas,Puntarenas,Cóbano,601,6,Pacífico Central,31926.81750860997
+50906,Guanacaste,Nandayure,Bejuco,509,5,Chorotega,26178.26193946651
+50205,Guanacaste,Nicoya,Sámara,502,5,Chorotega,10935.522755842678
+50905,Guanacaste,Nandayure,Porvenir,509,5,Chorotega,4015.4486077726906
+51103,Guanacaste,Hojancha,Puerto Carrillo,511,5,Chorotega,7686.959055321041
+60104,Puntarenas,Puntarenas,Lepanto,601,6,Pacífico Central,42432.08260811542
+50903,Guanacaste,Nandayure,Zapotal,509,5,Chorotega,10508.352481178
+51102,Guanacaste,Hojancha,Monte Romo,511,5,Chorotega,7526.739666716741
+50901,Guanacaste,Nandayure,Carmona,509,5,Chorotega,3165.689848203895
+50206,Guanacaste,Nicoya,Nosara,502,5,Chorotega,13365.20144780917
+50207,Guanacaste,Nicoya,Belén de Nosarita,502,5,Chorotega,12307.463944921094
+51104,Guanacaste,Hojancha,Huacas,511,5,Chorotega,3173.605418857044
+50904,Guanacaste,Nandayure,San Pablo,509,5,Chorotega,7809.120690576863
+50902,Guanacaste,Nandayure,Santa Rita,509,5,Chorotega,5138.249608791795
+51101,Guanacaste,Hojancha,Hojancha,511,5,Chorotega,7040.151964785157
+60113,Puntarenas,Puntarenas,Chira,601,6,Pacífico Central,4201.617328885936
+50306,Guanacaste,Santa Cruz,Cuajiniquil,503,5,Chorotega,21800.38253960595
+60106,Puntarenas,Puntarenas,Manzanillo,601,6,Pacífico Central,5985.74903428537
+50202,Guanacaste,Nicoya,Mansión,502,5,Chorotega,21216.20158356576
+50204,Guanacaste,Nicoya,Quebrada Honda,502,5,Chorotega,10917.23822991318
+50704,Guanacaste,Abangares,Colorado,507,5,Chorotega,19854.214014043646
+50303,Guanacaste,Santa Cruz,Veintisiete de Abril,503,5,Chorotega,30299.59968985188
+50605,Guanacaste,Cañas,Porozal,506,5,Chorotega,11090.88543700903
+50307,Guanacaste,Santa Cruz,Diriá,503,5,Chorotega,6622.483253358665
+50203,Guanacaste,Nicoya,San Antonio,502,5,Chorotega,33950.22569380663
+50701,Guanacaste,Abangares,Las Juntas,507,5,Chorotega,22871.177098721357
+50201,Guanacaste,Nicoya,Nicoya,502,5,Chorotega,31066.05582090726
+50309,Guanacaste,Santa Cruz,Tamarindo,503,5,Chorotega,12608.602243118354
+50302,Guanacaste,Santa Cruz,Bolsón,503,5,Chorotega,3228.2991938923024
+50603,Guanacaste,Cañas,San Miguel,506,5,Chorotega,12095.014034695932
+50604,Guanacaste,Cañas,Bebedero,506,5,Chorotega,5806.461077269819
+50308,Guanacaste,Santa Cruz,Cabo Velas,503,5,Chorotega,7370.398865252596
+50805,Guanacaste,Tilarán,Líbano,508,5,Chorotega,7213.039933542192
+50501,Guanacaste,Carrillo,Filadelfia,505,5,Chorotega,12523.912216907212
+50504,Guanacaste,Carrillo,Belén,505,5,Chorotega,18213.825241006773
+50601,Guanacaste,Cañas,Cañas,506,5,Chorotega,19309.34001572602
+50804,Guanacaste,Tilarán,Santa Rosa,508,5,Chorotega,7106.265596321158
+50502,Guanacaste,Carrillo,Palmira,505,5,Chorotega,3145.950085318547
+50503,Guanacaste,Carrillo,Sardinal,505,5,Chorotega,26017.46427980048
+50806,Guanacaste,Tilarán,Tierras Morenas,508,5,Chorotega,8331.644014755706
+50602,Guanacaste,Cañas,Palmira,506,5,Chorotega,20403.05637504273
+50404,Guanacaste,Bagaces,Río Naranjo,504,5,Chorotega,4361.744666502544
+50402,Guanacaste,Bagaces,La Fortuna,504,5,Chorotega,16346.666989792278
+50403,Guanacaste,Bagaces,Mogote,504,5,Chorotega,18177.03542620113
+50101,Guanacaste,Liberia,Liberia,501,5,Chorotega,56301.947956705306
+21304,Alajuela,Upala,Bijagua,213,2,Huetar Norte,18680.476813240955
+21504,Alajuela,Guatuso,Katira,215,2,Huetar Norte,11439.940885436798
+50105,Guanacaste,Liberia,Curubandé,501,5,Chorotega,8132.205895946653
+50102,Guanacaste,Liberia,Cañas Dulces,501,5,Chorotega,24340.594373147072
+50104,Guanacaste,Liberia,Nacascolo,501,5,Chorotega,32691.48026914462
+21308,Alajuela,Upala,Canalete,213,2,Huetar Norte,10645.163113370207
+21301,Alajuela,Upala,Upala,213,2,Huetar Norte,14864.653543500317
+50103,Guanacaste,Liberia,Mayorga,501,5,Chorotega,22750.698746776634
+21302,Alajuela,Upala,Aguas Claras,213,2,Huetar Norte,40853.62177912596
+51004,Guanacaste,La Cruz,Santa Elena,510,5,Chorotega,50959.493663139074
+21306,Alajuela,Upala,Dos Ríos,213,2,Huetar Norte,21866.803293984525
+50301,Guanacaste,Santa Cruz,Santa Cruz,503,5,Chorotega,28891.920250621642
+51105,Guanacaste,Hojancha,Matambú,511,5,Chorotega,871.4826729781695
+50802,Guanacaste,Tilarán,Quebrada Grande,508,5,Chorotega,3444.7331997536994
+11909,San José,Pérez Zeledón,Barú,119,1,Brunca,18966.296583266554
+60602,Puntarenas,Quepos,Savegre,606,6,Pacífico Central,21647.057957404828
+11901,San José,Pérez Zeledón,San Isidro de El General,119,1,Brunca,19181.8890042071
+11910,San José,Pérez Zeledón,Río Nuevo,119,1,Brunca,24219.107932257706
+60603,Puntarenas,Quepos,Naranjito,606,6,Pacífico Central,10533.458227956602
+11911,San José,Pérez Zeledón,Páramo,119,1,Brunca,20333.236789577048
+60901,Puntarenas,Parrita,Parrita,609,6,Pacífico Central,48321.799574606695
+10502,San José,Tarrazú,San Lorenzo,105,1,Central,18628.915819839534
+10503,San José,Tarrazú,San Carlos,105,1,Central,5896.184761843657
+11703,San José,Dota,Copey,117,1,Central,27757.548515850638
+11701,San José,Dota,Santa María,117,1,Central,9360.210576018339
+61101,Puntarenas,Garabito,Jacó,611,6,Pacífico Central,14137.037629638531
+12004,San José,León Cortés Castro,San Isidro,120,1,Central,1901.800705062316
+12001,San José,León Cortés Castro,San Pablo,120,1,Central,2076.0496213319693
+12003,San José,León Cortés Castro,Llano Bonito,120,1,Central,3410.1249483451284
+10501,San José,Tarrazú,San Marcos,105,1,Central,4601.665866757271
+11702,San José,Dota,Jardín,117,1,Central,3326.612098700769
+12005,San José,León Cortés Castro,Santa Cruz,120,1,Central,2177.5696365217746
+12006,San José,León Cortés Castro,San Antonio,120,1,Central,1013.7819765323997
+10409,San José,Puriscal,Chires,104,1,Central,22965.855325976696
+12002,San José,León Cortés Castro,San Andrés,120,1,Central,1610.1314491404603
+10605,San José,Aserrí,Legua,106,1,Central,8125.89593719368
+10606,San José,Aserrí,Monterrey,106,1,Central,827.7421974007393
+10306,San José,Desamparados,Frailes,103,1,Central,1966.9577739207614
+11205,San José,Acosta,Sabanillas,112,1,Central,17735.811309762736
+11204,San José,Acosta,Cangrejal,112,1,Central,6433.157471639977
+10308,San José,Desamparados,San Cristobal,103,1,Central,2502.913076997719
+11605,San José,Turrubares,Carara,116,1,Central,22055.237313839494
+30804,Cartago,El Guarco,Patio de Agua,308,3,Central,1094.0657006399026
+10603,San José,Aserrí,Vuelta de Jorco,106,1,Central,2205.422352506839
+10604,San José,Aserrí,San Gabriel,106,1,Central,1172.6485784090487
+30107,Cartago,Cartago,Corralillo,301,3,Central,3269.020178528689
+11202,San José,Acosta,Guaitil,112,1,Central,4398.937956906489
+11201,San José,Acosta,San Ignacio,112,1,Central,2274.430604075569
+10406,San José,Puriscal,Candelarita,104,1,Central,2672.7928204219515
+10309,San José,Desamparados,Rosario,103,1,Central,1485.027354705593
+30803,Cartago,El Guarco,Tobosi,308,3,Central,2005.8408798014361
+10602,San José,Aserrí,Tarbaca,106,1,Central,1534.1533403954734
+10402,San José,Puriscal,Mercedes Sur,104,1,Central,17443.059530238632
+10405,San José,Puriscal,San Rafael,104,1,Central,1549.9944374042427
+30801,Cartago,El Guarco,El Tejar,308,3,Central,611.6053903352973
+30105,Cartago,Cartago,Aguacaliente o San Francisco,301,3,Central,9926.37246551823
+30109,Cartago,Cartago,Dulce Nombre,301,3,Central,3363.6929272460497
+11203,San José,Acosta,Palmichal,112,1,Central,3413.8105499177846
+30205,Cartago,Paraíso,Llanos de Santa Lucía,302,3,Central,653.8796006042968
+30201,Cartago,Paraíso,Paraíso,302,3,Central,1829.429808878174
+61102,Puntarenas,Garabito,Tárcoles,611,6,Pacífico Central,9363.682670900784
+60601,Puntarenas,Quepos,Quepos,606,6,Pacífico Central,23604.93042933783
+30802,Cartago,El Guarco,San Isidro,308,3,Central,13488.169183910182
+61002,Puntarenas,Corredores,La Cuesta,610,6,Brunca,3708.281266627503
+61003,Puntarenas,Corredores,Canoas,610,6,Brunca,12205.042722943406
+61001,Puntarenas,Corredores,Corredor,610,6,Brunca,27566.89239035613
+60701,Puntarenas,Golfito,Golfito,607,6,Brunca,35590.65113712317
+60803,Puntarenas,Coto Brus,Aguabuena,608,6,Brunca,6389.345208036837
+60703,Puntarenas,Golfito,Guaycara,607,6,Brunca,32309.77186201089
+60505,Puntarenas,Osa,Piedras Blancas,605,6,Brunca,26258.298800169236
+60801,Puntarenas,Coto Brus,San Vito,608,6,Brunca,7459.267012274429
+60804,Puntarenas,Coto Brus,Limoncito,608,6,Brunca,12364.444804893705
+60802,Puntarenas,Coto Brus,Sabalito,608,6,Brunca,18686.07547381734
+60307,Puntarenas,Buenos Aires,Chánguena,603,6,Brunca,27304.19064149831
+60502,Puntarenas,Osa,Palmar,605,6,Brunca,25080.2891044048
+60306,Puntarenas,Buenos Aires,Colinas,603,6,Brunca,12879.777317096585
+60304,Puntarenas,Buenos Aires,Boruca,603,6,Brunca,12578.763875312932
+60806,Puntarenas,Coto Brus,Gutiérrez Braun,608,6,Brunca,23819.06722691852
+60805,Puntarenas,Coto Brus,Pittier,608,6,Brunca,25705.359177571245
+60305,Puntarenas,Buenos Aires,Pilas,603,6,Brunca,11434.085514802005
+60308,Puntarenas,Buenos Aires,Biolley,603,6,Brunca,20827.01326729332
+11912,San José,Pérez Zeledón,La  Amistad,119,1,Brunca,7629.264454472446
+60309,Puntarenas,Buenos Aires,Brunka,603,6,Brunca,16376.712442836702
+60302,Puntarenas,Buenos Aires,Volcán,603,6,Brunca,18740.733682690927
+60303,Puntarenas,Buenos Aires,Potrero Grande,603,6,Brunca,36824.01476923365
+11908,San José,Pérez Zeledón,Cajón,119,1,Brunca,11862.90520493989
+11905,San José,Pérez Zeledón,San Pedro,119,1,Brunca,20612.435396090943
+70402,Limón,Talamanca,Sixaola,704,7,Huetar Caribe,16901.253435736136
+70401,Limón,Talamanca,Bratsi,704,7,Huetar Caribe,18084.95766559742
+70404,Limón,Talamanca,Telire,704,7,Huetar Caribe,220829.8722080451
+70403,Limón,Talamanca,Cahuita,704,7,Huetar Caribe,23406.511431000283
+60301,Puntarenas,Buenos Aires,Buenos Aires,603,6,Brunca,52368.542447838845
+10303,San José,Desamparados,San Juan de Dios,103,1,Central,285.115583565897
+30103,Cartago,Cartago,Carmen,301,3,Central,432.99255400779015
+30308,Cartago,La Unión,Río Azul,303,3,Central,485.39166493816816
+10310,San José,Desamparados,Damas,103,1,Central,264.62335563408993
+10312,San José,Desamparados,Gravilias,103,1,Central,293.8597160401424
+11002,San José,Alajuelita,San Josecito,110,1,Central,237.0939253108054
+11004,San José,Alajuelita,Concepción,110,1,Central,242.509549661869
+10305,San José,Desamparados,San Antonio,103,1,Central,206.61911414363257
+10311,San José,Desamparados,San Rafael Abajo,103,1,Central,202.09448699070109
+30302,Cartago,La Unión,San Diego,303,3,Central,807.8318510794842
+10301,San José,Desamparados,Desamparados,103,1,Central,331.94917992314294
+11804,San José,Curridabat,Tirrases,118,1,Central,188.03383743326498
+11001,San José,Alajuelita,Alajuelita,110,1,Central,127.49003652826906
+30704,Cartago,Oreamuno,Cipreses,307,3,Central,937.0066751541933
+30301,Cartago,La Unión,Tres Ríos,303,3,Central,227.55276442075973
+10106,San José,San José,San Francisco de Dos Ríos,101,1,Central,264.20083917040057
+10704,San José,Mora,Piedras Negras,107,1,Central,1488.0924422671815
+10111,San José,San José,San Sebastián,101,1,Central,396.63712831598195
+30602,Cartago,Alvarado,Cervantes,306,3,Central,1517.633624875538
+30304,Cartago,La Unión,San Rafael,303,3,Central,950.5610809540428
+30303,Cartago,La Unión,San Juan,303,3,Central,394.82090307082467
+11601,San José,Turrubares,San Pablo,116,1,Central,2641.3158059804473
+10201,San José,Escazú,Escazú,102,1,Central,453.32226521481005
+10105,San José,San José,Zapote,101,1,Central,286.32453751877136
+11801,San José,Curridabat,Curridabat,118,1,Central,617.1431897611722
+11803,San José,Curridabat,Sánchez,118,1,Central,450.5417868187418
+11005,San José,Alajuelita,San Felipe,110,1,Central,513.0987636350723
+10110,San José,San José,Hatillo,101,1,Central,436.8078916376366
+20901,Alajuela,Orotina,Orotina,209,2,Pacífico Central,2156.4096822500483
+10104,San José,San José,Catedral,101,1,Central,236.66955451223362
+10701,San José,Mora,Colón,107,1,Central,3989.085949149544
+20902,Alajuela,Orotina,El Mastate,209,2,Pacífico Central,950.2364488614497
+10103,San José,San José,Hospital,101,1,Central,331.99661628910604
+30305,Cartago,La Unión,Concepción,303,3,Central,379.06121190170154
+10705,San José,Mora,Picagres,107,1,Central,2715.5277411945685
+11802,San José,Curridabat,Granadilla,118,1,Central,350.5417402370758
+10101,San José,San José,Carmen,101,1,Central,149.47646470537202
+30307,Cartago,La Unión,San Ramón,303,3,Central,347.1998384469041
+10901,San José,Santa Ana,Santa Ana,109,1,Central,543.6286751747137
+10905,San José,Santa Ana,Piedades,109,1,Central,1206.977403016853
+11501,San José,Montes de Oca,San Pedro,115,1,Central,474.1147988141645
+10802,San José,Goicoechea,San Francisco,108,1,Central,58.1461057576227
+10108,San José,San José,Mata Redonda,101,1,Central,365.52886271063574
+10102,San José,San José,Merced,101,1,Central,220.41375622732798
+20903,Alajuela,Orotina,Hacienda Vieja,209,2,Pacífico Central,1690.5341891476044
+10904,San José,Santa Ana,Uruca,109,1,Central,703.0649880035834
+10906,San José,Santa Ana,Brasil,109,1,Central,324.4208710456792
+30306,Cartago,La Unión,Dulce Nombre,303,3,Central,825.5229094293774
+11503,San José,Montes de Oca,Mercedes,115,1,Central,142.5258934616025
+11302,San José,Tibás,Cinco Esquinas,113,1,Central,65.42072593680724
+11502,San José,Montes de Oca,Sabanilla,115,1,Central,178.57403251963115
+10803,San José,Goicoechea,Calle Blancos,108,1,Central,235.66064957092422
+11504,San José,Montes de Oca,San Rafael,115,1,Central,782.40563721955
+10801,San José,Goicoechea,Guadalupe,108,1,Central,239.35448790063407
+30509,Cartago,Turrialba,Santa Rosa,305,3,Central,1862.0282959012493
+20404,Alajuela,San Mateo,Labrador,204,2,Pacífico Central,2126.0172468997666
+11303,San José,Tibás,Anselmo Llorente,113,1,Central,136.9752906469926
+11304,San José,Tibás,León XIII,113,1,Central,72.23865440494438
+10109,San José,San José,Pavas,101,1,Central,934.916064841292
+10804,San José,Goicoechea,Mata de Plátano,108,1,Central,778.6176643040894
+11305,San José,Tibás,Colima,113,1,Central,200.91753982063707
+10807,San José,Goicoechea,Purral,108,1,Central,299.76219112494977
+20508,Alajuela,Atenas,Escobal,205,2,Central,2628.2614927351997
+20111,Alajuela,Alajuela,Turrúcares,201,2,Central,3589.259537604726
+10805,San José,Goicoechea,Ipís,108,1,Central,249.7378675491809
+30110,Cartago,Cartago,Llano Grande,301,3,Central,3034.5430820870456
+30108,Cartago,Cartago,Tierra Blanca,301,3,Central,1280.2849241802123
+10107,San José,San José,Uruca,101,1,Central,839.4567223479237
+30703,Cartago,Oreamuno,Potrero Cerrado,307,3,Central,1811.2409359615133
+10203,San José,Escazú,San Rafael,102,1,Central,1304.273911599958
+11301,San José,Tibás,San Juan,113,1,Central,351.3898697620025
+10903,San José,Santa Ana,Pozos,109,1,Central,1334.9906573358533
+10806,San José,Goicoechea,Rancho Redondo,108,1,Central,1308.3200559040408
+11401,San José,Moravia,San Vicente,114,1,Central,539.5194018139504
+30601,Cartago,Alvarado,Pacayas,306,3,Central,2961.687368619006
+11101,San José,Vázquez de Coronado,San Isidro,111,1,Central,516.197548198684
+40301,Heredia,Santo Domingo,Santo Domingo,403,4,Central,77.9554523362688
+11104,San José,Vázquez de Coronado,Patalillo,111,1,Central,191.64059135896545
+40306,Heredia,Santo Domingo,Santa Rosa,403,4,Central,426.9624742089412
+20403,Alajuela,San Mateo,Jesús María,204,2,Pacífico Central,1865.5236592847675
+20505,Alajuela,Atenas,Concepción,205,2,Central,2190.8228930358837
+40701,Heredia,Belén,San Antonio,407,4,Central,355.6303658333842
+40305,Heredia,Santo Domingo,Santo Tomás,403,4,Central,353.9285700190352
+40104,Heredia,Heredia,Ulloa,401,4,Central,1137.8192483720904
+20108,Alajuela,Alajuela,San Rafael,201,2,Central,1933.2459879271678
+11102,San José,Vázquez de Coronado,San Rafael,111,1,Central,1690.6453503072144
+20502,Alajuela,Atenas,Jesús,205,2,Central,1810.5533747930835
+40703,Heredia,Belén,La Asunción,407,4,Central,456.92404772303814
+11403,San José,Moravia,La Trinidad,114,1,Central,490.07133416407515
+40902,Heredia,San Pablo,Rincón de Sabanilla,409,4,Central,240.6666137659756
+20202,Alajuela,San Ramón,Santiago,202,2,Central,6106.081204762207
+60202,Puntarenas,Esparza,San Juan Grande,602,6,Pacífico Central,1870.8292164794736
+60115,Puntarenas,Puntarenas,El Roble,601,6,Pacífico Central,793.2320002939916
+60112,Puntarenas,Puntarenas,Chacarita,601,6,Pacífico Central,491.75219740870324
+20501,Alajuela,Atenas,Atenas,205,2,Central,976.1430909959282
+20402,Alajuela,San Mateo,Desmonte,204,2,Pacífico Central,2022.2628363266472
+40302,Heredia,Santo Domingo,San Vicente,403,4,Central,287.90784979450314
+40303,Heredia,Santo Domingo,San Miguel,403,4,Central,590.253747106261
+20105,Alajuela,Alajuela,Guácima,201,2,Central,2806.7697949300064
+20503,Alajuela,Atenas,Mercedes,205,2,Central,783.7349460811065
+40103,Heredia,Heredia,San Francisco,401,4,Central,655.6982309816799
+40803,Heredia,Flores,Llorente,408,4,Central,185.55417724898237
+40702,Heredia,Belén,La Ribera,407,4,Central,425.71728070834865
+40307,Heredia,Santo Domingo,Tures,403,4,Central,387.9613825880874
+40101,Heredia,Heredia,Heredia,401,4,Central,285.7894669323894
+20104,Alajuela,Alajuela,San Antonio,201,2,Central,876.3225242313493
+40801,Heredia,Flores,San Joaquín,408,4,Central,274.8459618682622
+40901,Heredia,San Pablo,San Pablo,409,4,Central,593.2004079528949
+40503,Heredia,San Rafael,Santiago,405,4,Central,157.2112167019912
+20504,Alajuela,Atenas,San Isidro,205,2,Central,1438.9421128209267
+20109,Alajuela,Alajuela,Río Segundo,201,2,Central,545.7408715904428
+40304,Heredia,Santo Domingo,Paracito,403,4,Central,127.41247865533377
+20401,Alajuela,San Mateo,San Mateo,204,2,Pacífico Central,6489.1713213709745
+20113,Alajuela,Alajuela,Garita,201,2,Central,3390.40520103679
+40308,Heredia,Santo Domingo,Pará,403,4,Central,287.32703345369737
+40102,Heredia,Heredia,Mercedes,401,4,Central,414.9578237249073
+30603,Cartago,Alvarado,Capellades,306,3,Central,3439.07413759924
+60201,Puntarenas,Esparza,Espíritu Santo,602,6,Pacífico Central,1891.0744066305353
+40502,Heredia,San Rafael,San Josecito,405,4,Central,134.74900770491175
+40802,Heredia,Flores,Barrantes,408,4,Central,214.39468895243482
+40204,Heredia,Barva,San Roque,402,4,Central,127.84953070317216
+40501,Heredia,San Rafael,San Rafael,405,4,Central,133.47897725002625
+40604,Heredia,San Isidro,San Francisco,406,4,Central,455.95792199770074
+40201,Heredia,Barva,Barva,402,4,Central,83.68785498188016
+40601,Heredia,San Isidro,San Isidro,406,4,Central,266.69842153442323
+60204,Puntarenas,Esparza,San Rafael,602,6,Pacífico Central,3432.4925396543554
+20102,Alajuela,Alajuela,San José,201,2,Central,1487.254005041578
+40403,Heredia,Santa Bárbara,San Juan,404,4,Central,447.75786534568033
+20704,Alajuela,Palmares,Santiago,207,2,Central,795.654180398469
+20507,Alajuela,Atenas,Santa Eulalia,205,2,Central,1455.9413026908346
+20506,Alajuela,Atenas,San José,205,2,Central,1346.6644077162123
+20705,Alajuela,Palmares,Candelaria,207,2,Central,472.3170913865823
+40205,Heredia,Barva,Santa Lucía,402,4,Central,285.73455924047465
+60108,Puntarenas,Puntarenas,Barranca,601,6,Pacífico Central,3620.5768272521354
+40402,Heredia,Santa Bárbara,San Pedro,404,4,Central,256.4696292958589
+40401,Heredia,Santa Bárbara,Santa Bárbara,404,4,Central,128.01912880788277
+60203,Puntarenas,Esparza,Macacona,602,6,Pacífico Central,3412.6631693685986
+20101,Alajuela,Alajuela,Alajuela,201,2,Central,1061.0598836137835
+20702,Alajuela,Palmares,Zaragoza,207,2,Central,843.0854091143319
+20112,Alajuela,Alajuela,Tambor,201,2,Central,1389.0580943719333
+20804,Alajuela,Poás,Carrillos,208,2,Central,1013.0874102230273
+40602,Heredia,San Isidro,San José,406,4,Central,1136.973714311483
+20110,Alajuela,Alajuela,Desamparados,201,2,Central,1294.6253871073125
+20701,Alajuela,Palmares,Palmares,207,2,Central,119.36639750247309
+20307,Alajuela,Grecia,Puente de Piedra,203,2,Central,2302.510245530954
+40603,Heredia,San Isidro,Concepción,406,4,Central,807.2785954933588
+11402,San José,Moravia,San Jerónimo,114,1,Central,1852.857479328522
+40207,Heredia,Barva,Puente Salas,402,4,Central,469.77675137711157
+20707,Alajuela,Palmares,La Granja,207,2,Central,438.68866667164014
+20607,Alajuela,Naranjo,El Rosario,206,2,Central,1715.2592533664038
+20706,Alajuela,Palmares,Esquipulas,207,2,Central,540.2759737257416
+20301,Alajuela,Grecia,Grecia,203,2,Central,757.2588024118891
+40203,Heredia,Barva,San Pablo,402,4,Central,683.4872724147564
+40404,Heredia,Santa Bárbara,Jesús,404,4,Central,1115.3599029162117
+40505,Heredia,San Rafael,Concepción,405,4,Central,2281.389350489515
+30504,Cartago,Turrialba,Santa Cruz,305,3,Central,14086.790340109786
+20206,Alajuela,San Ramón,San Rafael,202,2,Central,3068.5713692094305
+20703,Alajuela,Palmares,Buenos Aires,207,2,Central,684.2199989926112
+20602,Alajuela,Naranjo,San Miguel,206,2,Central,1491.8384259689185
+60403,Puntarenas,Montes de Oro,San Isidro,604,6,Pacífico Central,5770.547403204032
+20201,Alajuela,San Ramón,San Ramón,202,2,Central,128.39549961889435
+40406,Heredia,Santa Bárbara,Purabá,404,4,Central,614.2951566849117
+21202,Alajuela,Sarchí,Sarchí Sur,212,2,Central,634.522304046689
+20207,Alajuela,San Ramón,San Isidro,202,2,Central,868.9603613909595
+20209,Alajuela,San Ramón,Alfaro,202,2,Central,1783.7111512118126
+20608,Alajuela,Naranjo,Palmitos,206,2,Central,1046.8261739932989
+20801,Alajuela,Poás,San Pedro,208,2,Central,1357.8933598467179
+20203,Alajuela,San Ramón,San Juan,202,2,Central,511.932838996087
+40504,Heredia,San Rafael,Ángeles,405,4,Central,2124.4549925985334
+20103,Alajuela,Alajuela,Carrizal,201,2,Central,1621.9663314350287
+60205,Puntarenas,Esparza,San Jerónimo,602,6,Pacífico Central,4914.433739867249
+20606,Alajuela,Naranjo,San Juan,206,2,Central,744.9366149736684
+20601,Alajuela,Naranjo,Naranjo,206,2,Central,1497.5906967894744
+20803,Alajuela,Poás,San Rafael,208,2,Central,1418.3361685816076
+40206,Heredia,Barva,San José de la Montaña,402,4,Central,3703.554344736099
+20305,Alajuela,Grecia,Tacares,203,2,Central,2490.101652371722
+11105,San José,Vázquez de Coronado,Cascajal,111,1,Central,13202.495049173476
+30705,Cartago,Oreamuno,Santa Rosa,307,3,Central,15027.436763566287
+20211,Alajuela,San Ramón,Concepción,202,2,Central,950.6667889875736
+21205,Alajuela,Sarchí,Rodríguez,212,2,Central,728.2614695848271
+20205,Alajuela,San Ramón,Piedades Sur,202,2,Central,11563.120241145674
+40405,Heredia,Santa Bárbara,Santo Domingo,404,4,Central,2648.5940708981007
+20106,Alajuela,Alajuela,San Isidro,201,2,Central,3469.017699417418
+20605,Alajuela,Naranjo,San Jerónimo,206,2,Central,904.973207220628
+20603,Alajuela,Naranjo,San José,206,2,Central,2089.5230877366125
+60401,Puntarenas,Montes de Oro,Miramar,604,6,Pacífico Central,11095.629984700397
+20304,Alajuela,Grecia,San Roque,203,2,Central,2695.2847552005574
+20302,Alajuela,Grecia,San Isidro,203,2,Central,1683.1072091057622
+21201,Alajuela,Sarchí,Sarchí Norte,212,2,Central,2113.8807754971403
+20204,Alajuela,San Ramón,Piedades Norte,202,2,Central,4767.749964446094
+20308,Alajuela,Grecia,Bolivar,203,2,Central,3077.6112041548436
+21204,Alajuela,Sarchí,San Pedro,212,2,Central,1086.5664763411087
+20210,Alajuela,San Ramón,Volio,202,2,Central,2066.932611881515
+11103,San José,Vázquez de Coronado,Dulce Nombre de Jesús,111,1,Central,6791.634231929362
+20604,Alajuela,Naranjo,Cirrí Sur,206,2,Central,3210.516350941688
+20107,Alajuela,Alajuela,Sabanilla,201,2,Central,4318.478690743358
+20802,Alajuela,Poás,San Juan,208,2,Central,1637.922345749584
+20805,Alajuela,Poás,Sabana Redonda,208,2,Central,2020.9188036751102
+20212,Alajuela,San Ramón,Zapotal,202,2,Central,6712.6141738775
+21101,Alajuela,Zarcero,Zarcero,211,2,Central,1182.9159950532721
+21104,Alajuela,Zarcero,Guadalupe,211,2,Central,2258.424180435142
+21103,Alajuela,Zarcero,Tapesco,211,2,Central,638.6866676623011
+21105,Alajuela,Zarcero,Palmira,211,2,Central,3066.876179942682
+21102,Alajuela,Zarcero,Laguna,211,2,Central,2328.258420648322
+21107,Alajuela,Zarcero,Brisas,211,2,Central,1784.6809452229313
+21106,Alajuela,Zarcero,Zapote,211,2,Central,4475.752092009314
+60116,Puntarenas,Puntarenas,Arancibia,601,6,Pacífico Central,4486.051658460218
+21203,Alajuela,Sarchí,Toro Amarillo,212,2,Central,9113.205265410197
+60402,Puntarenas,Montes de Oro,La Unión,604,6,Pacífico Central,7892.8148617437255
+40105,Heredia,Heredia,Vara Blanca,401,4,Central,25816.648901276243
+70202,Limón,Pococí,Jiménez,702,7,Huetar Caribe,10823.263071414547
+70207,Limón,Pococí,La Colonia,702,7,Huetar Caribe,3879.4834686584554
+21003,Alajuela,San Carlos,Buenavista,210,2,Huetar Norte,2597.153931962171
+70201,Limón,Pococí,Guápiles,702,7,Huetar Caribe,22174.497466246943
+20214,Alajuela,San Ramón,San Lorenzo,202,2,Central,30474.492964243578
+21008,Alajuela,San Carlos,La Tigra,210,2,Huetar Norte,5621.121373912186
+20114,Alajuela,Alajuela,Sarapiquí,201,2,Huetar Norte,11379.07613086652
+21005,Alajuela,San Carlos,Venecia,210,2,Huetar Norte,13253.137233742775
+21001,Alajuela,San Carlos,Quesada,210,2,Huetar Norte,14348.018455047399
+20213,Alajuela,San Ramón,Peñas Blancas,202,2,Huetar Norte,24679.693964453774
+41003,Heredia,Sarapiquí,Las Horquetas,410,4,Huetar Norte,56459.12115343733
+21002,Alajuela,San Carlos,Florencia,210,2,Huetar Norte,19965.746555685764
+21009,Alajuela,San Carlos,La Palmera,210,2,Huetar Norte,10036.061513331477
+21004,Alajuela,San Carlos,Aguas Zarcas,210,2,Huetar Norte,18569.830590339072
+41002,Heredia,Sarapiquí,La Virgen,410,4,Huetar Norte,51419.48890980705
+20303,Alajuela,Grecia,San José,203,2,Central,1240.8405309218413
+20208,Alajuela,San Ramón,Ángeles,202,2,Central,8490.660647993027
+21601,Alajuela,Río Cuarto,Río Cuarto,216,2,Huetar Norte,9762.130410232729
+21007,Alajuela,San Carlos,La Fortuna,210,2,Huetar Norte,22958.88222638422
+21603,Alajuela,Río Cuarto,Santa Isabel,216,2,Huetar Norte,10408.529618348071
+21012,Alajuela,San Carlos,Monterrey,210,2,Huetar Norte,22059.180645781154
+21404,Alajuela,Los Chiles,San Jorge,214,2,Huetar Norte,21495.231078784404
+21403,Alajuela,Los Chiles,El Amparo,214,2,Huetar Norte,31288.617169839912
+21602,Alajuela,Río Cuarto,Santa Rita,216,2,Huetar Norte,5318.513612324258
+30510,Cartago,Turrialba,Tres Equis,305,3,Central,3695.0781735163027
+70103,Limón,Limón,Río Blanco,701,7,Huetar Caribe,13130.715994306189
+70101,Limón,Limón,Limón,701,7,Huetar Caribe,5984.030033874743
+70503,Limón,Matina,Carrandi,705,7,Huetar Caribe,20553.901201636145
+70306,Limón,Siquirres,Alegría,703,7,Huetar Caribe,3804.724119545234
+70304,Limón,Siquirres,Germania,703,7,Huetar Caribe,3396.44295889569
+70302,Limón,Siquirres,Pacuarito,703,7,Huetar Caribe,22002.350531081316
+70305,Limón,Siquirres,El Cairo,703,7,Huetar Caribe,10696.118337634405
+70307,Limón,Siquirres,Reventazón,703,7,Huetar Caribe,19001.14541877802
+70502,Limón,Matina,Batán,705,7,Huetar Caribe,21340.609733751622
+70301,Limón,Siquirres,Siquirres,703,7,Huetar Caribe,18420.795059683867
+61004,Puntarenas,Corredores,Laurel,610,6,Brunca,18884.58780866394
+60704,Puntarenas,Golfito,Pavón,607,6,Brunca,35336.20573835384
+60101,Puntarenas,Puntarenas,Puntarenas,601,6,Pacífico Central,3404.028692678908
+60102,Puntarenas,Puntarenas,Pitahaya,601,6,Pacífico Central,10965.205030808505
+60114,Puntarenas,Puntarenas,Acapulco,601,6,Pacífico Central,11090.905330347074
+60107,Puntarenas,Puntarenas,Guacimal,601,6,Pacífico Central,11494.16414152881
+61201,Puntarenas,Monteverde,Monteverde,612,6,Pacífico Central,5347.167458318935
+50702,Guanacaste,Abangares,Sierra,507,5,Chorotega,11200.101643053284
+50808,Guanacaste,Tilarán,Cabeceras,508,5,Chorotega,5092.893881981486
+50803,Guanacaste,Tilarán,Tronadora,508,5,Chorotega,13993.143419511332
+50801,Guanacaste,Tilarán,Tilarán,508,5,Chorotega,14474.86510793263
+50807,Guanacaste,Tilarán,Arenal,508,5,Chorotega,7266.866577288087
+21010,Alajuela,San Carlos,Venado,210,2,Huetar Norte,16918.61004962796
+21503,Alajuela,Guatuso,Cote,215,2,Huetar Norte,18357.54269914006
+21501,Alajuela,Guatuso,San Rafael,215,2,Huetar Norte,30398.889560034204
+21502,Alajuela,Guatuso,Buenavista,215,2,Huetar Norte,15086.185012618083
+60506,Puntarenas,Osa,Bahía Drake,605,6,Brunca,39232.45887288236
+60503,Puntarenas,Osa,Sierpe,605,6,Brunca,63798.767846339666
+60501,Puntarenas,Osa,Puerto Cortés,605,6,Brunca,23450.592802187206
+11907,San José,Pérez Zeledón,Pejibaye,119,1,Brunca,14117.706327812784
+11906,San José,Pérez Zeledón,Platanares,119,1,Brunca,8091.604490104884
+11903,San José,Pérez Zeledón,Daniel Flores,119,1,Brunca,6405.743665844187
+11902,San José,Pérez Zeledón,El General,119,1,Brunca,7688.0405631505755
+11904,San José,Pérez Zeledón,Rivas,119,1,Brunca,31000.006521116982
+30203,Cartago,Paraíso,Orosi,302,3,Central,37653.92098334532
+30403,Cartago,Jiménez,Pejivalle,304,3,Central,17320.39511390548
+30101,Cartago,Cartago,Oriental,301,3,Central,204.08331808250819
+10607,San José,Aserrí,Salitrillos,106,1,Central,1434.1115073961064
+30102,Cartago,Cartago,Occidental,301,3,Central,201.10405261766
+10601,San José,Aserrí,Aserrí,106,1,Central,1525.9398818205734
+30402,Cartago,Jiménez,Tucurrique,304,3,Central,3350.2505279955717
+30204,Cartago,Paraíso,Cachí,302,3,Central,4110.593927418622
+11604,San José,Turrubares,San Luis,116,1,Central,5117.368721290002
+10702,San José,Mora,Guayabo,107,1,Central,900.6877930282722
+10403,San José,Puriscal,Barbacoas,104,1,Central,1861.62113138918
+10313,San José,Desamparados,Los Guido,103,1,Central,305.50671364755715
+10401,San José,Puriscal,Santiago,104,1,Central,3451.756522535037
+30106,Cartago,Cartago,Guadalupe o Arenilla,301,3,Central,1316.1705327857148
+10706,San José,Mora,Jaris,107,1,Central,548.7530463769626
+10307,San José,Desamparados,Patarrá,103,1,Central,1587.5707654032544
+10703,San José,Mora,Tabarcia,107,1,Central,4042.651595493608
+10408,San José,Puriscal,San Antonio,104,1,Central,1461.656990031191
+30701,Cartago,Oreamuno,San Rafael,307,3,Central,1027.710817539365
+10304,San José,Desamparados,San Rafael Arriba,103,1,Central,322.86492850594686
+11603,San José,Turrubares,San Juan de Mata,116,1,Central,8625.172234233409
+11003,San José,Alajuelita,San Antonio,110,1,Central,1026.334970833603
+10407,San José,Puriscal,Desamparaditos,104,1,Central,721.9819094501819
+11602,San José,Turrubares,San Pedro,116,1,Central,3919.544466278748
+30202,Cartago,Paraíso,Santiago,302,3,Central,2563.6081263042984
+20904,Alajuela,Orotina,Coyolar,209,2,Pacífico Central,3647.609507620108
+10404,San José,Puriscal,Grifo Alto,104,1,Central,2639.721827878637
+30702,Cartago,Oreamuno,Cot,307,3,Central,1486.4793655071492
+10202,San José,Escazú,San Antonio,102,1,Central,1695.8836710842836
+10902,San José,Santa Ana,Salitral,109,1,Central,2028.6734120038916
+30104,Cartago,Cartago,San Nicolás,301,3,Central,2922.6161858239075
+30502,Cartago,Turrialba,La Suiza,305,3,Central,16093.202772685087
+30501,Cartago,Turrialba,Turrialba,305,3,Central,5662.746993472455
+20905,Alajuela,Orotina,La Ceiba,209,2,Pacífico Central,6066.282666360219
+30401,Cartago,Jiménez,Juan Viñas,304,3,Central,2824.7247278904215
+60206,Puntarenas,Esparza,Caldera,602,6,Pacífico Central,6201.7523045791295
+60504,Puntarenas,Osa,Bahía Ballena,605,6,Brunca,15833.207867362833
+10707,San José,Mora,Quitirrisí,107,1,Central,2661.857388270833
+30206,Cartago,Paraíso,Birrisito,302,3,Central,887.6286018583171
+61103,Puntarenas,Garabito,Lagunillas,611,6,Pacífico Central,8100.333048783472
+30508,Cartago,Turrialba,Tayutic,305,3,Central,7477.1272612080675
+70102,Limón,Limón,Valle La Estrella,701,7,Huetar Caribe,123842.02655047731
+30507,Cartago,Turrialba,Tuis,305,3,Central,3920.057032816572
+70104,Limón,Limón,Matama,701,7,Huetar Caribe,34047.2331163586
+70501,Limón,Matina,Matina,705,7,Huetar Caribe,35145.299497489
+30512,Cartago,Turrialba,Chirripó,305,3,Central,94089.52754275517
+30511,Cartago,Turrialba,La Isabel,305,3,Central,1979.2437097527034
+30506,Cartago,Turrialba,Pavones,305,3,Central,4205.252514800192
+30503,Cartago,Turrialba,Peralta,305,3,Central,969.4096398044487
+70303,Limón,Siquirres,Florida,703,7,Huetar Caribe,8192.993474117151
+70602,Limón,Guácimo,Mercedes,706,7,Huetar Caribe,9005.631648808994
+70603,Limón,Guácimo,Pocora,706,7,Huetar Caribe,7288.322030991821
+70601,Limón,Guácimo,Guácimo,706,7,Huetar Caribe,22379.395797888996
+70604,Limón,Guácimo,Río Jiménez,706,7,Huetar Caribe,33371.94788472749
+70605,Limón,Guácimo,Duacarí,706,7,Huetar Caribe,8111.732742050271
+70204,Limón,Pococí,Roxana,702,7,Huetar Caribe,16620.651571389182
+70205,Limón,Pococí,Cariari,702,7,Huetar Caribe,20102.62467432043
+70203,Limón,Pococí,Rita,702,7,Huetar Caribe,50373.60848181958
+30404,Cartago,Jiménez,La Victoria,304,3,Central,1511.9076793917184
+40202,Heredia,Barva,San Pedro,402,4,Central,247.11103974245373
+61301,Puntarenas,Puerto Jiménez,Puerto Jiménez,613,6,Brunca,72046.84152274948
+60110,Puntarenas,Puntarenas,Isla del Coco,601,6,Pacífico Central,2302.558216602839
+10302,San José,Desamparados,San Miguel,103,1,Central,2136.396494793176
+30111,Cartago,Cartago,Quebradilla,301,3,Central,1912.3694609304941
+50305,Guanacaste,Santa Cruz,Cartagena,503,5,Chorotega,8289.093952827836
+50304,Guanacaste,Santa Cruz,Tempate,503,5,Chorotega,12970.227506308598
+70206,Limón,Pococí,Colorado,702,7,Huetar Caribe,94852.61554738646
+41004,Heredia,Sarapiquí,Llanuras del Gaspar,410,4,Huetar Norte,26721.727537318722
+41001,Heredia,Sarapiquí,Puerto Viejo,410,4,Huetar Norte,42851.82845275505
+41005,Heredia,Sarapiquí,Cureña,410,4,Huetar Norte,36970.20484240392
+21006,Alajuela,San Carlos,Pital,210,2,Huetar Norte,37926.468466076556
+21011,Alajuela,San Carlos,Cutris,210,2,Huetar Norte,84909.58079639233
+21013,Alajuela,San Carlos,Pocosol,210,2,Huetar Norte,66049.73123481787
+21402,Alajuela,Los Chiles,Caño Negro,214,2,Huetar Norte,30128.619363518275
+21401,Alajuela,Los Chiles,Los Chiles,214,2,Huetar Norte,50363.94303617853
+21307,Alajuela,Upala,Yolillal,213,2,Huetar Norte,13963.67003447497
+21303,Alajuela,Upala,San José O Pizote,213,2,Huetar Norte,28544.007217480077
+51002,Guanacaste,La Cruz,Santa Cecilia,510,5,Chorotega,25803.46033723926
+51003,Guanacaste,La Cruz,La Garita,510,5,Chorotega,27340.202749803317
+51001,Guanacaste,La Cruz,La Cruz,510,5,Chorotega,34443.465881256576
+21305,Alajuela,Upala,Delicias,213,2,Huetar Norte,9853.455070930873
+50401,Guanacaste,Bagaces,Bagaces,504,5,Chorotega,79810.41799828876
+60310,Puntarenas,Buenos Aires,Cabagra,603,6,Brunca,28960.15263879283
+30505,Cartago,Turrialba,Santa Teresita,305,3,Central,4884.206080804849
+50405,Guanacaste,Bagaces,Pijije,504,5,Chorotega,9096.723370974549

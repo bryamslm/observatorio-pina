@@ -1,0 +1,231 @@
+cod_pais,pais,iso3
+4,Afghanistan,AFG
+8,Albania,ALB
+12,Algeria,DZA
+16,American Samoa,ASM
+20,Andorra,AND
+24,Angola,AGO
+28,Antigua and Barbuda,ATG
+899,"Areas, nes",_X 
+32,Argentina,ARG
+51,Armenia,ARM
+533,Aruba,ABW
+36,Australia,AUS
+40,Austria,AUT
+31,Azerbaijan,AZE
+44,Bahamas,BHS
+48,Bahrain,BHR
+50,Bangladesh,BGD
+52,Barbados,BRB
+112,Belarus,BLR
+56,Belgium,BEL
+84,Belize,BLZ
+204,Benin,BEN
+60,Bermuda,BMU
+64,Bhutan,BTN
+68,Bolivia (Plurinational State of),BOL
+70,Bosnia Herzegovina,BIH
+72,Botswana,BWA
+76,Brazil,BRA
+96,Brunei Darussalam,BRN
+100,Bulgaria,BGR
+854,Burkina Faso,BFA
+108,Burundi,BDI
+132,Cabo Verde,CPV
+116,Cambodia,KHM
+120,Cameroon,CMR
+124,Canada,CAN
+140,Central African Rep.,CAF
+148,Chad,TCD
+152,Chile,CHL
+156,China,CHN
+344,"China, Hong Kong SAR",HKG
+446,"China, Macao SAR",MAC
+170,Colombia,COL
+178,Congo,COG
+184,Cook Isds,COK
+188,Costa Rica,CRI
+384,Côte d'Ivoire,CIV
+191,Croatia,HRV
+192,Cuba,CUB
+531,Curaçao,CUW
+196,Cyprus,CYP
+203,Czechia,CZE
+180,Dem. Rep. of the Congo,COD
+208,Denmark,DNK
+212,Dominica,DMA
+214,Dominican Rep.,DOM
+218,Ecuador,ECU
+818,Egypt,EGY
+222,El Salvador,SLV
+233,Estonia,EST
+748,Eswatini,SWZ
+231,Ethiopia,ETH
+230,Ethiopia (...1992),ETH
+242,Fiji,FJI
+246,Finland,FIN
+251,France,FRA
+838,Free Zones,X2 
+254,French Guiana (Overseas France),GUF
+258,French Polynesia,PYF
+266,Gabon,GAB
+268,Georgia,GEO
+276,Germany,DEU
+288,Ghana,GHA
+300,Greece,GRC
+308,Grenada,GRD
+312,Guadeloupe (Overseas France),GLP
+320,Guatemala,GTM
+324,Guinea,GIN
+624,Guinea-Bissau,GNB
+328,Guyana,GUY
+332,Haiti,HTI
+336,Holy See (Vatican City State),VAT
+340,Honduras,HND
+348,Hungary,HUN
+352,Iceland,ISL
+699,India,IND
+356,India (...1974),IND
+360,Indonesia,IDN
+364,Iran,IRN
+372,Ireland,IRL
+376,Israel,ISR
+380,Italy,ITA
+388,Jamaica,JAM
+392,Japan,JPN
+400,Jordan,JOR
+398,Kazakhstan,KAZ
+404,Kenya,KEN
+414,Kuwait,KWT
+417,Kyrgyzstan,KGZ
+418,Lao People's Dem. Rep.,LAO
+428,Latvia,LVA
+422,Lebanon,LBN
+426,Lesotho,LSO
+430,Liberia,LBR
+434,Libya,LBY
+440,Lithuania,LTU
+442,Luxembourg,LUX
+450,Madagascar,MDG
+454,Malawi,MWI
+458,Malaysia,MYS
+466,Mali,MLI
+470,Malta,MLT
+474,Martinique (Overseas France),MTQ
+480,Mauritius,MUS
+175,Mayotte (Overseas France),MYT
+484,Mexico,MEX
+499,Montenegro,MNE
+504,Morocco,MAR
+508,Mozambique,MOZ
+104,Myanmar,MMR
+516,Namibia,NAM
+524,Nepal,NPL
+528,Netherlands,NLD
+530,Netherlands Antilles (...2010),ANT
+540,New Caledonia,NCL
+554,New Zealand,NZL
+558,Nicaragua,NIC
+562,Niger,NER
+566,Nigeria,NGA
+807,North Macedonia,MKD
+579,Norway,NOR
+512,Oman,OMN
+490,"Other Asia, nes",S19
+586,Pakistan,PAK
+591,Panama,PAN
+598,Papua New Guinea,PNG
+600,Paraguay,PRY
+604,Peru,PER
+608,Philippines,PHL
+616,Poland,POL
+620,Portugal,PRT
+630,Puerto Rico ,PRI
+634,Qatar,QAT
+410,Rep. of Korea,KOR
+498,Rep. of Moldova,MDA
+638,Réunion (Overseas France),REU
+642,Romania,ROU
+643,Russian Federation,RUS
+646,Rwanda,RWA
+659,Saint Kitts and Nevis,KNA
+662,Saint Lucia,LCA
+534,Saint Maarten,SXM
+670,Saint Vincent and the Grenadines,VCT
+882,Samoa,WSM
+678,Sao Tome and Principe,STP
+682,Saudi Arabia,SAU
+686,Senegal,SEN
+688,Serbia,SRB
+891,Serbia and Montenegro (...2005),SCG
+690,Seychelles,SYC
+702,Singapore,SGP
+703,Slovakia,SVK
+705,Slovenia,SVN
+90,Solomon Isds,SLB
+710,South Africa,ZAF
+728,South Sudan,SSD
+724,Spain,ESP
+144,Sri Lanka,LKA
+275,State of Palestine,PSE
+729,Sudan,SDN
+736,Sudan (...2011),SDN
+740,Suriname,SUR
+752,Sweden,SWE
+757,Switzerland,CHE
+760,Syria,SYR
+158,"Taiwan, Province of China",TWN
+762,Tajikistan,TJK
+764,Thailand,THA
+626,Timor-Leste,TLS
+768,Togo,TGO
+776,Tonga,TON
+780,Trinidad and Tobago,TTO
+788,Tunisia,TUN
+792,Türkiye,TUR
+800,Uganda,UGA
+804,Ukraine,UKR
+784,United Arab Emirates,ARE
+826,United Kingdom,GBR
+834,United Rep. of Tanzania,TZA
+581,United States Minor Outlying Islands,UMI
+840,United States of America,USA
+858,Uruguay,URY
+842,USA,USA
+860,Uzbekistan,UZB
+548,Vanuatu,VUT
+862,Venezuela,VEN
+704,Viet Nam,VNM
+887,Yemen,YEM
+894,Zambia,ZMB
+716,Zimbabwe,ZWE
+1,World,
+2,Africa,
+5,South America,
+9,Oceania,
+11,Western Africa,
+13,Central America,
+14,Eastern Africa,
+15,Northern Africa,
+17,Middle Africa,
+18,Southern Africa,
+19,Americas,
+21,Northern America,
+29,Caribbean,
+30,Eastern Asia,
+34,Southern Asia,
+35,South-eastern Asia,
+39,Southern Europe,
+53,Australia and New Zealand,
+54,Melanesia,
+61,Polynesia,
+97,European Union (27),
+142,Asia,
+145,Western Asia,
+150,Europe,
+159,China,
+199,Least Developed Countries (LDCs),
+432,Land Locked Developing Countries (LLDCs),
+722,Small Island Developing States (SIDS),
+901,Low Income Food Deficit Countries (LIFDCs),
+902,Net Food Importing Developing Countries (NFIDCs),
