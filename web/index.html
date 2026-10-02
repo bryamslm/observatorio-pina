@@ -4,244 +4,293 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Observatorio de la piña · Costa Rica</title>
-<meta name="description" content="Pipeline de datos públicos (MOCUPP, UN Comtrade, FAOSTAT) a SQL Server y Power BI: mercado, territorio, sostenibilidad y productividad de la piña en Costa Rica. Proyecto de Bryam López.">
+<meta name="description" content="La piña de Costa Rica contada con datos públicos: satélite (MOCUPP), comercio exterior (UN Comtrade) y producción mundial (FAOSTAT), en SQL Server y Power BI. Proyecto de Bryam López.">
 <meta property="og:title" content="Observatorio de la piña · Costa Rica">
-<meta property="og:description" content="Datos públicos validados contra cifras oficiales, modelo estrella en SQL Server y reporte de Power BI.">
+<meta property="og:description" content="65.442 hectáreas vistas desde el satélite. Datos públicos validados contra cifras oficiales, modelo estrella en SQL Server y reporte de Power BI.">
 <meta property="og:image" content="https://observatorio.bryamlopez.com/img/01-mercado.jpg">
-<meta name="theme-color" content="#1F5C2E">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F5C2E'/%3E%3Cpath d='M16 6c2 3 2 5 0 7-2-2-2-4 0-7z' fill='%23E3A21A'/%3E%3Cellipse cx='16' cy='20' rx='6' ry='8' fill='%23E3A21A'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0F3D2E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F3D2E'/%3E%3Cpath d='M16 7l7 4v8l-7 4-7-4v-8z' fill='%23F5C542'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Tokens: corona (verde de la hoja), pulpa (amarillo de la fruta madura), oxido (bosque perdido),
+     salvia (fondo frio), tinta, niebla. */
   :root {
-    --bg: #FBFAF5; --paper: #FFFFFF; --ink: #1D2B22; --muted: #5B6B60; --line: #E4E0D2;
-    --green: #1F5C2E; --green-2: #5E8C61; --gold: #E3A21A; --rust: #9A2B1B; --soft: #F3EFE0;
-    --serif: "Fraunces", Georgia, serif; --sans: "IBM Plex Sans", system-ui, sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --corona: #0F3D2E; --corona-2: #174A38; --pulpa: #F5C542; --hoja: #6E9F72;
+    --oxido: #B8501F; --salvia: #EEF2EC; --papel: #FFFFFF; --tinta: #10251C;
+    --niebla: #5B6E64; --linea: #D3DCD2; --sobre-corona: #E6EFE8; --sobre-corona-2: #A9C2B2;
+    --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+    --texto: "Instrument Sans", system-ui, sans-serif;
+    --mono: "Martian Mono", ui-monospace, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #121A15; --paper: #18221C; --ink: #E9EEE6; --muted: #A2B0A5; --line: #2A3830;
-      --green: #7FBF86; --green-2: #5E8C61; --gold: #F0B43C; --rust: #E2765F; --soft: #1E2A23;
+      --salvia: #0C1A14; --papel: #12241B; --tinta: #E4ECE6; --niebla: #9DB0A5; --linea: #24382D;
+      --oxido: #E07A47; --hoja: #8FBF92;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #121A15; --paper: #18221C; --ink: #E9EEE6; --muted: #A2B0A5; --line: #2A3830;
-    --green: #7FBF86; --green-2: #5E8C61; --gold: #F0B43C; --rust: #E2765F; --soft: #1E2A23;
+    --salvia: #0C1A14; --papel: #12241B; --tinta: #E4ECE6; --niebla: #9DB0A5; --linea: #24382D;
+    --oxido: #E07A47; --hoja: #8FBF92;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans); }
-  a { color: var(--green); text-underline-offset: 3px; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
-  header.top { border-bottom: 1px solid var(--line); }
-  header.top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; gap: 12px; }
-  .brand { font-family: var(--mono); font-size: 13px; letter-spacing: .04em; color: var(--muted); text-decoration: none; }
-  .brand b { color: var(--ink); }
-  nav a { font-size: 14px; margin-left: 18px; color: var(--muted); text-decoration: none; }
-  nav a:hover { color: var(--green); }
-  @media (max-width: 720px) { nav a:not(.gh) { display: none; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body { margin: 0; background: var(--salvia); color: var(--tinta); font: 17px/1.6 var(--texto); }
+  a { color: inherit; text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--pulpa); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+  .mono { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
 
-  .hero { padding: 64px 0 40px; }
-  .eyebrow { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); }
-  h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(36px, 6vw, 64px); line-height: 1.04; margin: 12px 0 18px; letter-spacing: -.01em; max-width: 16ch; }
-  .lede { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 62ch; margin: 0; }
-  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 40px; }
-  .kpi { background: var(--paper); padding: 20px 20px 18px; }
-  .kpi .v { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); color: var(--green); line-height: 1.1; }
-  .kpi .l { font-size: 13px; color: var(--muted); margin-top: 6px; }
-  @media (max-width: 820px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+  /* Encabezado ------------------------------------------------------------------ */
+  .top { background: var(--corona); color: var(--sobre-corona); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
+  .top a { text-decoration: none; }
+  .top nav { display: flex; gap: 20px; font-size: 14px; color: var(--sobre-corona-2); }
+  .top nav a:hover { color: var(--pulpa); }
+  @media (max-width: 760px) { .top nav .opt { display: none; } }
 
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
-  .sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 32px; margin-bottom: 28px; }
-  .sec-head .num { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .08em; }
-  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; margin: 0 0 10px; }
-  .sec-head p { margin: 0; color: var(--muted); max-width: 64ch; }
-  @media (max-width: 820px) { .sec-head { grid-template-columns: 1fr; gap: 8px; } }
+  /* Heroe: el teselado ---------------------------------------------------------- */
+  .hero { background: var(--corona); color: var(--sobre-corona); padding: 40px 0 0; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 32px; align-items: center; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero .eyebrow { color: var(--pulpa); }
+  h1 { font-family: var(--display); font-weight: 800; text-transform: uppercase; line-height: .9;
+       font-size: clamp(54px, 9vw, 112px); margin: 18px 0 20px; letter-spacing: .005em; }
+  h1 .cifra { color: var(--pulpa); font-variant-numeric: tabular-nums; display: block; }
+  .lede { font-size: clamp(17px, 1.8vw, 19px); color: var(--sobre-corona-2); max-width: 46ch; margin: 0 0 24px; }
+  .toggle { display: inline-flex; border: 1px solid #3C6B55; border-radius: 999px; padding: 3px; gap: 2px; }
+  .toggle button { font: 500 13px var(--mono); color: var(--sobre-corona-2); background: none; border: 0;
+                   padding: 8px 16px; border-radius: 999px; cursor: pointer; }
+  .toggle button[aria-pressed="true"] { background: var(--pulpa); color: var(--corona); }
+  .toggle-note { display: block; margin-top: 10px; font-size: 13px; color: var(--sobre-corona-2); }
+  .mapa { position: relative; }
+  .mapa svg { width: 100%; height: auto; display: block; }
+  .mapa .contorno { fill: var(--corona-2); stroke: #3C6B55; stroke-width: 900; stroke-linejoin: round; }
+  .mapa .hx { transition: fill .7s ease, opacity .7s ease; stroke: var(--corona); stroke-width: 260; }
+  .mapa .tip { position: absolute; pointer-events: none; background: var(--papel); color: var(--tinta);
+               font-size: 13px; padding: 6px 10px; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,.25);
+               opacity: 0; transform: translate(-50%, -120%); white-space: nowrap; }
+  .escala { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--sobre-corona-2); margin-top: 8px; }
+  .escala i { flex: 0 0 140px; height: 8px; border-radius: 2px; background: linear-gradient(90deg, #2E5E47, #9CC56B, #F5C542); }
 
-  .grid2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
-  @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
-  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 20px; min-width: 0; }
-  .panel h3 { font-size: 14px; font-weight: 600; margin: 0 0 12px; }
-  .panel .note { font-size: 12.5px; color: var(--muted); margin: 12px 0 0; }
-  .chart { position: relative; height: 300px; }
-  .bars { list-style: none; margin: 0; padding: 0; }
-  .bars li { display: grid; grid-template-columns: 120px 1fr 56px; align-items: center; gap: 10px; font-size: 13.5px; padding: 5px 0; }
-  .bars .track { background: var(--soft); border-radius: 4px; height: 12px; overflow: hidden; }
-  .bars .fill { background: var(--green); height: 100%; border-radius: 4px; }
-  .bars .n { font-family: var(--mono); font-size: 12.5px; text-align: right; color: var(--muted); }
-  #map { height: 420px; border-radius: 10px; z-index: 0; }
-  .years { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-  .years button { font: 500 13px var(--mono); border: 1px solid var(--line); background: var(--paper); color: var(--ink); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
-  .years button[aria-pressed="true"] { background: var(--green); color: var(--paper); border-color: var(--green); }
-  .legend { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); margin-top: 10px; }
-  .legend .ramp { height: 10px; flex: 0 0 160px; border-radius: 3px; background: linear-gradient(90deg, #F3EFE0, #E3A21A, #1F5C2E); }
+  /* Sello de caja de exportacion */
+  .sello { margin-top: 40px; border-top: 2px dashed #3C6B55; }
+  .sello .wrap { display: flex; flex-wrap: wrap; gap: 8px 32px; padding-top: 16px; padding-bottom: 18px; }
+  .sello span { font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--sobre-corona-2); }
+  .sello b { color: var(--pulpa); font-weight: 500; }
 
-  .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .shots figure { margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-  .shots img { display: block; width: 100%; height: auto; cursor: zoom-in; }
-  .shots figcaption { font-size: 13px; color: var(--muted); padding: 10px 14px; border-top: 1px solid var(--line); }
-  .shots figure.wide { grid-column: 1 / -1; }
-  @media (max-width: 720px) { .shots { grid-template-columns: 1fr; } }
-  .sim { display: inline-block; font: 600 11px var(--mono); color: var(--rust); border: 1px solid var(--rust); border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  /* Secciones --------------------------------------------------------------------- */
+  section { padding: 72px 0; border-top: 1px solid var(--linea); }
+  .cabeza { max-width: 760px; margin-bottom: 32px; }
+  .cabeza .mono { color: var(--niebla); }
+  h2 { font-family: var(--display); font-weight: 800; text-transform: uppercase; line-height: .95;
+       font-size: clamp(36px, 5vw, 58px); margin: 10px 0 14px; }
+  .cabeza p { margin: 0; color: var(--niebla); }
+  .dos { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 20px; }
+  @media (max-width: 900px) { .dos { grid-template-columns: 1fr; } }
+  .panel { background: var(--papel); border: 1px solid var(--linea); border-radius: 10px; padding: 20px; min-width: 0; }
+  .panel h3 { font: 600 15px var(--texto); margin: 0 0 14px; }
+  .nota { font-size: 13px; color: var(--niebla); margin: 14px 0 0; }
+  .grafico { position: relative; height: 300px; }
 
-  .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; counter-reset: s; }
-  .step { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 16px; position: relative; }
-  .step::before { counter-increment: s; content: "0" counter(s); font: 500 12px var(--mono); color: var(--gold); }
-  .step h4 { margin: 6px 0 6px; font-size: 15px; }
-  .step p { margin: 0; font-size: 13px; color: var(--muted); }
-  .step code { font: 12px var(--mono); color: var(--ink); }
-  @media (max-width: 980px) { .pipeline { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .pipeline { grid-template-columns: 1fr; } }
+  .barras { list-style: none; margin: 0; padding: 0; }
+  .barras li { display: grid; grid-template-columns: minmax(96px, 128px) 1fr 60px; gap: 10px; align-items: center;
+               font-size: 14px; padding: 5px 0; }
+  .barras .pista { display: block; height: 10px; background: var(--salvia); border-radius: 2px; overflow: hidden; }
+  .barras .valor { display: block; height: 100%; background: var(--corona); border-radius: 2px; }
+  :root[data-theme="dark"] .barras .valor { background: var(--hoja); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .barras .valor { background: var(--hoja); } }
+  .barras .n { font: 12px var(--mono); text-align: right; color: var(--niebla); }
+  .barras li.marca span:first-child { font-weight: 600; }
+  .barras li.marca .valor { background: var(--pulpa); }
 
-  table.checks { width: 100%; border-collapse: collapse; font-size: 14px; }
-  table.checks th, table.checks td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  table.checks th { font: 500 12px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-  table.checks td.ok { color: var(--green); font-weight: 600; white-space: nowrap; }
-  table.checks td.bad { color: var(--rust); font-weight: 600; white-space: nowrap; }
-  .tablewrap { overflow-x: auto; }
-  ol.findings { margin: 0; padding-left: 20px; }
-  ol.findings li { margin-bottom: 10px; }
-  ol.findings b { font-weight: 600; }
+  .cita { border-left: 4px solid var(--pulpa); padding: 4px 0 4px 16px; margin-top: 20px; }
+  .cita .grande { font: 800 40px/1 var(--display); color: var(--tinta); }
+  .cita p { margin: 6px 0 0; font-size: 14px; color: var(--niebla); }
 
-  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; font-size: 14px; color: var(--muted); }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .cta { display: inline-block; background: var(--green); color: var(--paper); text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 14px; }
-  .cta.ghost { background: transparent; color: var(--green); border: 1px solid var(--green); margin-left: 8px; }
-  dialog { border: 0; padding: 0; background: transparent; max-width: 96vw; }
-  dialog::backdrop { background: rgba(10, 16, 12, .8); }
-  dialog img { max-width: 96vw; max-height: 90vh; display: block; border-radius: 8px; }
+  /* Reporte ------------------------------------------------------------------------- */
+  .pestanas { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .pestanas button { font: 500 14px var(--texto); color: var(--tinta); background: var(--papel);
+                     border: 1px solid var(--linea); padding: 8px 14px; border-radius: 6px; cursor: pointer; }
+  .pestanas button[aria-selected="true"] { background: var(--corona); color: var(--sobre-corona); border-color: var(--corona); }
+  .pestanas .sim { font: 500 10px var(--mono); color: var(--oxido); margin-left: 6px; }
+  .pestanas button[aria-selected="true"] .sim { color: var(--pulpa); }
+  .pantalla { margin: 0; background: var(--papel); border: 1px solid var(--linea); border-radius: 10px; overflow: hidden; }
+  .pantalla img { display: block; width: 100%; height: auto; aspect-ratio: 1187 / 673; }
+  .pantalla figcaption { padding: 12px 16px; font-size: 14px; color: var(--niebla); border-top: 1px solid var(--linea); }
+
+  /* Metodo -------------------------------------------------------------------------- */
+  .pasos { list-style: none; margin: 0 0 24px; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr);
+           border: 1px solid var(--linea); border-radius: 10px; overflow: hidden; background: var(--linea); gap: 1px; counter-reset: paso; }
+  .pasos li { background: var(--papel); padding: 18px; counter-increment: paso; }
+  .pasos li::before { content: "Paso " counter(paso); font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--niebla); }
+  .pasos h4 { font: 800 24px/1 var(--display); text-transform: uppercase; margin: 8px 0 8px; }
+  .pasos p { font-size: 14px; color: var(--niebla); margin: 0; }
+  .pasos code { font: 12px var(--mono); color: var(--tinta); }
+  @media (max-width: 980px) { .pasos { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .pasos { grid-template-columns: 1fr; } }
+  .tabla { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+  th { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--niebla); }
+  td.ok { font-family: var(--mono); font-size: 13px; color: var(--corona); white-space: nowrap; }
+  :root[data-theme="dark"] td.ok { color: var(--hoja); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) td.ok { color: var(--hoja); } }
+  td.mal { font-family: var(--mono); font-size: 13px; color: var(--oxido); white-space: nowrap; }
+  ol.hallazgos { margin: 0; padding-left: 20px; font-size: 15px; }
+  ol.hallazgos li { margin-bottom: 10px; }
+  ol.hallazgos code { font: 12px var(--mono); }
+
+  footer { background: var(--corona); color: var(--sobre-corona-2); padding: 40px 0; font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer a.boton { display: inline-block; background: var(--pulpa); color: var(--corona); font-weight: 600;
+                   text-decoration: none; padding: 10px 16px; border-radius: 6px; }
+  footer a.boton + a.boton { background: transparent; color: var(--sobre-corona); border: 1px solid #3C6B55; margin-left: 8px; }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="https://bryamlopez.com"><b>Bryam López</b> / observatorio-piña</a>
-    <nav>
-      <a href="#mercado">Mercado</a><a href="#territorio">Territorio</a><a href="#sostenibilidad">Sostenibilidad</a>
-      <a href="#powerbi">Power BI</a><a href="#metodo">Método</a>
-      <a class="gh" href="https://github.com/bryamslm/observatorio-pina">GitHub ↗</a>
+    <a href="https://bryamlopez.com"><span class="mono">Bryam López</span></a>
+    <nav aria-label="Secciones">
+      <a class="opt" href="#mercado">Mercado</a><a class="opt" href="#territorio">Territorio</a>
+      <a class="opt" href="#bosque">Bosque</a><a class="opt" href="#reporte">Power BI</a>
+      <a href="https://github.com/bryamslm/observatorio-pina">Código ↗</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div class="eyebrow">Proyecto de datos · Costa Rica</div>
-    <h1>Observatorio de la piña</h1>
-    <p class="lede">Datos públicos del sector, desde la parcela hasta el puerto. Satélite (MOCUPP), comercio exterior (UN Comtrade) y producción mundial (FAOSTAT) pasan a un modelo estrella en SQL Server y de ahí a un reporte de Power BI. Antes de mostrar una cifra, la contrasté con la publicación oficial.</p>
-    <div class="kpis" id="kpis">
-      <div class="kpi"><div class="v" data-k="usd">—</div><div class="l" data-k="usd-l">Exportaciones</div></div>
-      <div class="kpi"><div class="v" data-k="cuota">—</div><div class="l">Cuota del mercado mundial</div></div>
-      <div class="kpi"><div class="v" data-k="ha">—</div><div class="l">Hectáreas de piña (MOCUPP 2019)</div></div>
-      <div class="kpi"><div class="v" data-k="hn">—</div><div class="l">del área está en Huetar Norte</div></div>
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="mono eyebrow">Observatorio de la piña · Costa Rica</div>
+        <h1><span class="cifra" id="h-cifra">65.442</span> hectáreas vistas desde el satélite</h1>
+        <p class="lede">Cada hexágono son unos 16 km² del país. Su color dice cuánta piña detectó el monitoreo satelital MOCUPP en esa celda. Compará 2000 con 2019.</p>
+        <div class="toggle" role="group" aria-label="Año de la medición">
+          <button type="button" data-anio="2000" aria-pressed="false">2000</button>
+          <button type="button" data-anio="2019" aria-pressed="true">2019</button>
+        </div>
+        <span class="toggle-note" id="h-nota">En 2019 el 67,4 % del área estaba en la región Huetar Norte.</span>
+      </div>
+      <div class="mapa" id="mapa">
+        <svg id="hex" role="img" aria-label="Mapa hexagonal de Costa Rica con las hectáreas de piña por celda"></svg>
+        <div class="tip" id="tip"></div>
+        <div class="escala"><span>0 ha</span><i></i><span id="esc-max">—</span><span>por celda</span></div>
+      </div>
+    </div>
+    <div class="sello" aria-label="Datos de exportación">
+      <div class="wrap" id="sello">
+        <span>Producto de Costa Rica</span><span>Partida <b>HS 080430</b></span>
+      </div>
     </div>
   </div>
 
   <section id="mercado">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="num">01 · MERCADO</div>
-        <div><h2>Costa Rica es el primer exportador de piña del mundo</h2>
-          <p>Valor FOB de la partida HS 080430 según UN Comtrade. La cuota mundial se calcula solo entre países y deja fuera los agregados regionales.</p></div>
+      <div class="cabeza">
+        <div class="mono">Mercado</div>
+        <h2>El primer exportador de piña del mundo</h2>
+        <p>Valor FOB que reporta UN Comtrade. La cuota mundial se calcula solo entre países y deja fuera los agregados regionales.</p>
       </div>
-      <div class="grid2">
-        <div class="panel"><h3>Exportaciones por año (millones de USD)</h3><div class="chart"><canvas id="c-export"></canvas></div>
-          <p class="note">El volumen (kg) de 2024 no se usa: Comtrade reporta casi el doble que en 2023 con un valor que solo sube 16 %.</p></div>
-        <div class="panel"><h3 id="dest-title">Destinos</h3><ul class="bars" id="destinos"></ul></div>
+      <div class="dos">
+        <div class="panel"><h3>Exportaciones de Costa Rica por año, millones de USD</h3><div class="grafico"><canvas id="g-export"></canvas></div>
+          <p class="nota">El volumen de 2024 no entra en el precio por kilo: Comtrade reporta casi el doble que en 2023 y el valor solo sube 16 %.</p></div>
+        <div class="panel"><h3 id="t-destinos">Destinos</h3><ul class="barras" id="destinos"></ul></div>
       </div>
     </div>
   </section>
 
   <section id="territorio">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="num">02 · TERRITORIO</div>
-        <div><h2>Dónde está la piña</h2>
-          <p>Polígonos de piña de MOCUPP (SINAC/PNUD, CENAT-PRIAS) cortados por los límites distritales del IGN. La capa de 2016 está incompleta, así que no se usa.</p></div>
+      <div class="cabeza">
+        <div class="mono">Territorio</div>
+        <h2>Dónde crece</h2>
+        <p>Los polígonos de MOCUPP, cortados por los límites distritales del IGN. La capa de 2016 está incompleta y no se usa.</p>
       </div>
-      <div class="grid2">
-        <div class="panel">
-          <div class="years" id="years" role="group" aria-label="Año de medición"></div>
-          <div id="map" role="img" aria-label="Mapa de hectáreas de piña por distrito"></div>
-          <div class="legend"><span>0 ha</span><span class="ramp"></span><span id="legend-max">—</span></div>
-        </div>
-        <div class="panel"><h3>Distritos con más piña · 2019 (ha)</h3><ul class="bars" id="top-dist"></ul></div>
+      <div class="dos">
+        <div class="panel"><h3>Distritos con más piña en 2019, hectáreas</h3><ul class="barras" id="distritos"></ul></div>
+        <div class="panel"><h3>Área de piña por medición, hectáreas</h3><div class="grafico" style="height:220px"><canvas id="g-area"></canvas></div>
+          <div class="cita"><div class="grande" id="poco-cifra">—</div><p id="poco-texto"></p></div></div>
       </div>
     </div>
   </section>
 
-  <section id="sostenibilidad">
+  <section id="bosque">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="num">03 · SOSTENIBILIDAD</div>
-        <div><h2>Piña y bosque</h2>
-          <p>Hectáreas de cobertura arbórea convertidas a piña en cada periodo. El primer periodo cubre quince años y los demás, uno.</p></div>
+      <div class="cabeza">
+        <div class="mono">Bosque y rendimiento</div>
+        <h2>Más fruta por hectárea, menos bosque convertido</h2>
+        <p>MOCUPP mide la cobertura arbórea que se convierte en piña en cada periodo; la última medición publicada llega a 2019. FAOSTAT da el rendimiento: toneladas por hectárea cosechada.</p>
       </div>
-      <div class="grid2">
-        <div class="panel"><h3>Pérdida de bosque asociada a piña (ha)</h3><div class="chart"><canvas id="c-loss"></canvas></div></div>
-        <div class="panel"><h3>Rendimiento: Costa Rica contra el mundo (t/ha)</h3><div class="chart"><canvas id="c-yield"></canvas></div>
-          <p class="note">FAOSTAT, producción entre área cosechada. El mundo es el promedio ponderado de todos los países productores.</p></div>
+      <div class="dos">
+        <div class="panel"><h3>Bosque convertido en piña, hectáreas por periodo</h3><div class="grafico"><canvas id="g-bosque"></canvas></div>
+          <p class="nota">El primer periodo abarca quince años; los demás, uno.</p></div>
+        <div class="panel"><h3>Rendimiento, toneladas por hectárea</h3><div class="grafico"><canvas id="g-rend"></canvas></div>
+          <p class="nota">El mundo es el promedio ponderado de todos los países productores.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="powerbi">
+  <section id="reporte">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="num">04 · POWER BI</div>
-        <div><h2>El reporte</h2>
-          <p>Cinco páginas sobre un modelo estrella de 15 tablas y 38 medidas DAX. El reporte está guardado como código (PBIP: TMDL y PBIR), así que cada medida y cada visual se pueden revisar en git. La quinta página usa datos de operación <b>simulados</b>, con la estructura de un sistema de gestión agrícola y de un ERP.</p></div>
+      <div class="cabeza">
+        <div class="mono">Power BI</div>
+        <h2>El reporte</h2>
+        <p>Cinco páginas sobre un modelo estrella de 15 tablas y 38 medidas DAX. Está guardado como código (PBIP), así que cada medida y cada visual se pueden revisar en git. La página de operación usa datos simulados con la estructura de un sistema de gestión agrícola y un ERP.</p>
       </div>
-      <div class="shots">
-        <figure class="wide"><img src="img/01-mercado.jpg" alt="Página Mercado del reporte de Power BI" loading="lazy" width="1188" height="673"><figcaption>1 · Mercado: exportaciones, destinos y cuota mundial</figcaption></figure>
-        <figure><img src="img/02-territorio.jpg" alt="Página Territorio" loading="lazy" width="1188" height="673"><figcaption>2 · Territorio: hectáreas por distrito</figcaption></figure>
-        <figure><img src="img/03-sostenibilidad.jpg" alt="Página Sostenibilidad" loading="lazy" width="1188" height="673"><figcaption>3 · Sostenibilidad: pérdida de bosque por periodo</figcaption></figure>
-        <figure><img src="img/04-productividad.jpg" alt="Página Productividad" loading="lazy" width="1188" height="673"><figcaption>4 · Productividad: rendimiento contra el mundo</figcaption></figure>
-        <figure><img src="img/05-operacion.jpg" alt="Página Operación simulada" loading="lazy" width="1188" height="673"><figcaption>5 · Operación <span class="sim">SIMULADO</span>: cajas/ha, costo por caja, presupuesto contra real</figcaption></figure>
+      <div class="pestanas" role="tablist" aria-label="Páginas del reporte" id="pestanas">
+        <button role="tab" aria-selected="true" data-img="01-mercado" data-pie="Mercado: exportaciones, destinos, precio por caja y cuota mundial.">Mercado</button>
+        <button role="tab" aria-selected="false" data-img="02-territorio" data-pie="Territorio: hectáreas por distrito y por medición, peso de Huetar Norte.">Territorio</button>
+        <button role="tab" aria-selected="false" data-img="03-sostenibilidad" data-pie="Sostenibilidad: bosque convertido en piña por periodo y por distrito.">Sostenibilidad</button>
+        <button role="tab" aria-selected="false" data-img="04-productividad" data-pie="Productividad: rendimiento de Costa Rica contra el mundo y mayores productores.">Productividad</button>
+        <button role="tab" aria-selected="false" data-img="05-operacion" data-pie="Operación con datos simulados: cajas por hectárea, % exportable, costo por caja y presupuesto contra real por bloque.">Operación<span class="sim">simulado</span></button>
       </div>
+      <figure class="pantalla" role="tabpanel">
+        <img id="pantalla" src="img/01-mercado.jpg" alt="Página Mercado del reporte de Power BI" width="1187" height="673">
+        <figcaption id="pie">Mercado: exportaciones, destinos, precio por caja y cuota mundial.</figcaption>
+      </figure>
     </div>
   </section>
 
   <section id="metodo">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="num">05 · MÉTODO</div>
-        <div><h2>Cómo está construido</h2>
-          <p>Cada paso es un script reproducible que se puede volver a correr sin duplicar datos. El código, el modelo y el reporte están en el repositorio.</p></div>
+      <div class="cabeza">
+        <div class="mono">Método</div>
+        <h2>Cómo está hecho</h2>
+        <p>Cada paso es un script que se puede volver a correr sin duplicar datos. Antes de publicar una cifra, la comparé con la que publica la fuente oficial.</p>
       </div>
-      <div class="pipeline">
-        <div class="step"><h4>Descarga</h4><p>WFS de MOCUPP e IGN, API de Comtrade y bulk de FAOSTAT. <code>descargar.py</code></p></div>
-        <div class="step"><h4>Limpieza</h4><p>Reproyección a CRTM05, cruce espacial por distrito y normalización. <code>procesar.py</code></p></div>
-        <div class="step"><h4>Almacén</h4><p>SQL Server 2022 (T-SQL), modelo estrella, vistas de KPI y un login de solo lectura. <code>cargar.py</code></p></div>
-        <div class="step"><h4>Modelo</h4><p>Modelo semántico de Power BI con 38 medidas DAX, generado como código. <code>generar_pbip.py</code></p></div>
-        <div class="step"><h4>Publicación</h4><p>Reporte de cinco páginas y esta página estática. <code>exportar_web.py</code></p></div>
-      </div>
-
-      <div class="grid2" style="margin-top:20px">
+      <ol class="pasos">
+        <li><h4>Descarga</h4><p>WFS de MOCUPP e IGN, API de Comtrade y archivo masivo de FAOSTAT. <code>descargar.py</code></p></li>
+        <li><h4>Limpieza</h4><p>Reproyección a CRTM05, cruce espacial por distrito y normalización. <code>procesar.py</code></p></li>
+        <li><h4>Almacén</h4><p>SQL Server 2022: modelo estrella, vistas de KPI y un usuario de solo lectura. <code>cargar.py</code></p></li>
+        <li><h4>Modelo</h4><p>Modelo semántico de Power BI con 38 medidas DAX, escrito como código. <code>generar_pbip.py</code></p></li>
+        <li><h4>Publicación</h4><p>Reporte de cinco páginas y esta página. <code>exportar_web.py</code></p></li>
+      </ol>
+      <div class="dos">
         <div class="panel">
-          <h3>Controles contra cifras publicadas</h3>
-          <div class="tablewrap"><table class="checks">
+          <h3>Controles contra las cifras oficiales</h3>
+          <div class="tabla"><table>
             <thead><tr><th>Control</th><th>Calculado</th><th>Publicado</th></tr></thead>
             <tbody>
-              <tr><td>Área de piña 2015</td><td class="ok">58.427 ha</td><td>58.426 ha · MOCUPP</td></tr>
-              <tr><td>Área de piña 2018</td><td class="ok">65.671 ha</td><td>65.671 ha · MOCUPP</td></tr>
-              <tr><td>Pérdida de bosque 2017–2018</td><td class="ok">343 ha</td><td>“más de 343 ha” · MOCUPP</td></tr>
-              <tr><td>Huetar Norte, % del área</td><td class="ok">67,4 %</td><td>67 % · MOCUPP</td></tr>
-              <tr><td>Área de piña 2016</td><td class="bad">5.959 ha</td><td>68.643 ha → capa incompleta, excluida</td></tr>
+              <tr><td>Área de piña 2015</td><td class="ok">58.427 ha</td><td>58.426 ha, MOCUPP</td></tr>
+              <tr><td>Área de piña 2018</td><td class="ok">65.671 ha</td><td>65.671 ha, MOCUPP</td></tr>
+              <tr><td>Bosque perdido 2017–2018</td><td class="ok">343 ha</td><td>“más de 343 ha”, MOCUPP</td></tr>
+              <tr><td>Peso de Huetar Norte</td><td class="ok">67,4 %</td><td>67 %, MOCUPP</td></tr>
+              <tr><td>Área de piña 2016</td><td class="mal">5.959 ha</td><td>68.643 ha: capa incompleta, excluida</td></tr>
             </tbody>
           </table></div>
         </div>
         <div class="panel">
-          <h3>Problemas encontrados en las fuentes</h3>
-          <ol class="findings">
-            <li><b>Sistema de coordenadas mal declarado.</b> El WFS de MOCUPP dice EPSG:4326, pero las coordenadas están en CRTM05. Sin corregirlo, el área daba 0 ha.</li>
-            <li><b>Capa de 2016 incompleta.</b> Trae 5.959 ha contra las 68.643 publicadas.</li>
-            <li><b>Código de distrito duplicado.</b> En el campo <code>CÓDIGO</code> del IGN, Chomes y San Juan de Abangares comparten el mismo valor. La llave correcta es el código DTA.</li>
-            <li><b>Volumen de 2024 en Comtrade.</b> Casi el doble que en 2023 con un valor que solo sube 16 %. Se excluye del precio por kg.</li>
-            <li><b>Rótulos y nombres que cambian.</b> Cada año MOCUPP nombra distinto los tipos de cambio y Comtrade arrastra nombres históricos como “India (...1974)”. Se normalizan los dos.</li>
+          <h3>Errores que encontré en las fuentes</h3>
+          <ol class="hallazgos">
+            <li>El servicio de MOCUPP declara coordenadas geográficas, pero vienen en CRTM05. Sin corregirlo, el área daba cero.</li>
+            <li>La capa de 2016 trae 5.959 ha contra las 68.643 publicadas.</li>
+            <li>En el campo <code>CÓDIGO</code> del IGN, Chomes y San Juan de Abangares tienen el mismo valor. La llave correcta es el código DTA.</li>
+            <li>Comtrade reporta para 2024 casi el doble del volumen de 2023 con un valor que solo sube 16 %.</li>
+            <li>Cada año MOCUPP nombra distinto los cambios de cobertura, y Comtrade arrastra nombres históricos como “India (...1974)”.</li>
           </ol>
         </div>
       </div>
@@ -251,104 +300,141 @@
 
 <footer>
   <div class="wrap">
-    <div>Hecho por <a href="https://bryamlopez.com">Bryam López</a>, ingeniero en Computación (TEC). Fuentes públicas: MOCUPP (SINAC/PNUD, CENAT-PRIAS), IGN-SNIT, UN Comtrade, FAOSTAT.</div>
-    <div><a class="cta" href="https://github.com/bryamslm/observatorio-pina">Ver el código</a><a class="cta ghost" href="https://bryamlopez.com">CV</a></div>
+    <p style="margin:0;max-width:60ch">Hecho por Bryam López, ingeniero en Computación (TEC). Fuentes públicas: MOCUPP (SINAC, PNUD, CENAT-PRIAS), IGN-SNIT, UN Comtrade y FAOSTAT.</p>
+    <div><a class="boton" href="https://github.com/bryamslm/observatorio-pina">Ver el código</a><a class="boton" href="https://bryamlopez.com">Ver mi CV</a></div>
   </div>
 </footer>
 
-<dialog id="zoom"><img alt=""></dialog>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (async () => {
+  const fmt = (n, d = 0) => n.toLocaleString("es-ES", { maximumFractionDigits: d, minimumFractionDigits: d, useGrouping: "always" });
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-  const nf = (n, d = 0) => n.toLocaleString("es-CR", { maximumFractionDigits: d, minimumFractionDigits: d });
-  const [datos, geo] = await Promise.all([
-    fetch("datos.json").then((r) => r.json()),
-    fetch("distritos.geojson").then((r) => r.json()),
-  ]);
-  const m = datos.mercado, t = datos.territorio;
+  const d = await fetch("datos.json", { cache: "no-cache" }).then((r) => r.json());
+  const m = d.mercado, t = d.territorio;
+  const area = Object.fromEntries(t.serie.map((s) => [s.anio, s.ha]));
 
-  // KPIs
-  const ha19 = t.serie.find((s) => s.anio === 2019).ha;
-  const cuota = m.cuota_mundial.at(-1);
-  document.querySelector('[data-k="usd"]').textContent = `$${nf(m.usd_ultimo / 1e6)} M`;
-  document.querySelector('[data-k="usd-l"]').textContent = `Exportaciones ${m.ultimo_anio} (${m.var_ultimo >= 0 ? "+" : ""}${nf(m.var_ultimo * 100, 1)} % a/a)`;
-  document.querySelector('[data-k="cuota"]').textContent = `${nf(cuota.cuota * 100, 1)} %`;
-  document.querySelector('[data-k="ha"]').textContent = nf(ha19);
-  document.querySelector('[data-k="hn"]').textContent = `${nf(t.huetar_norte_pct * 100, 1)} %`;
-
-  // Barras HTML
-  const bars = (el, rows, label, value, fmt) => {
-    const max = Math.max(...rows.map(value));
-    el.innerHTML = rows.map((r) => `<li><span>${label(r)}</span><span class="track"><span class="fill" style="width:${(100 * value(r)) / max}%"></span></span><span class="n">${fmt(r)}</span></li>`).join("");
-  };
-  document.getElementById("dest-title").textContent = `Destinos ${m.ultimo_anio} (% del valor)`;
-  bars(document.getElementById("destinos"), m.destinos, (r) => r.pais, (r) => r.usd, (r) => `${nf(r.pct * 100, 1)} %`);
-  bars(document.getElementById("top-dist"), t.top_distritos, (r) => r.distrito, (r) => r.ha, (r) => nf(r.ha));
-
-  // Graficos
-  Chart.defaults.font.family = css("--sans");
-  Chart.defaults.color = css("--muted");
-  Chart.defaults.borderColor = css("--line");
-  const base = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } };
-  new Chart(document.getElementById("c-export"), {
-    type: "line",
-    data: { labels: m.serie.map((s) => s.anio), datasets: [{ data: m.serie.map((s) => s.usd / 1e6), borderColor: css("--green"), backgroundColor: "transparent", borderWidth: 2.5, pointRadius: 0, tension: 0.25 }] },
-    options: { ...base, plugins: { ...base.plugins, tooltip: { callbacks: { label: (c) => `$${nf(c.parsed.y)} M` } } } },
-  });
-  const loss = datos.sostenibilidad.perdida_por_periodo;
-  new Chart(document.getElementById("c-loss"), {
-    type: "bar",
-    data: { labels: loss.map((p) => p.periodo), datasets: [{ data: loss.map((p) => p.ha), backgroundColor: css("--green"), borderRadius: 4 }] },
-    options: { ...base, plugins: { ...base.plugins, tooltip: { callbacks: { label: (c) => `${nf(c.parsed.y)} ha` } } } },
-  });
-  const rend = datos.productividad.rendimiento.filter((r) => r.anio >= 1990);
-  new Chart(document.getElementById("c-yield"), {
-    type: "line",
-    data: { labels: rend.map((r) => r.anio), datasets: [
-      { label: "Costa Rica", data: rend.map((r) => r.cr), borderColor: css("--green"), borderWidth: 2.5, pointRadius: 0 },
-      { label: "Mundo", data: rend.map((r) => r.mundo), borderColor: css("--gold"), borderWidth: 2.5, pointRadius: 0 },
-    ] },
-    options: { ...base, plugins: { legend: { display: true, position: "top", align: "start", labels: { boxWidth: 12 } } } },
-  });
-
-  // Mapa
-  const map = L.map("map", { scrollWheelZoom: false, attributionControl: true }).setView([10.55, -84.2], 8);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; OpenStreetMap &copy; CARTO · MOCUPP · IGN', maxZoom: 13,
-  }).addTo(map);
-  const years = [2000, 2015, 2017, 2018, 2019];
-  const max = Math.max(...geo.features.map((f) => f.properties.ha_2019 || 0));
-  document.getElementById("legend-max").textContent = `${nf(max)} ha`;
-  const ramp = (v) => {
-    const x = Math.min(1, v / max);
-    const stops = [[243, 239, 224], [227, 162, 26], [31, 92, 46]];
+  // Heroe: teselado hexagonal --------------------------------------------------------
+  const h = d.hex, svg = document.getElementById("hex"), NS = "http://www.w3.org/2000/svg";
+  svg.setAttribute("viewBox", `0 0 ${h.ancho} ${h.alto}`);
+  const contorno = document.createElementNS(NS, "path");
+  contorno.setAttribute("d", h.contorno); contorno.setAttribute("class", "contorno");
+  svg.appendChild(contorno);
+  const hexPath = (cx, cy, r) => "M" + [0, 1, 2, 3, 4, 5].map((k) => {
+    const a = (Math.PI / 180) * (60 * k - 30); return `${(cx + r * Math.cos(a)).toFixed(0)},${(cy + r * Math.sin(a)).toFixed(0)}`;
+  }).join("L") + "Z";
+  const max = Math.max(...h.celdas.map((c) => Math.max(c[2], c[3])));
+  document.getElementById("esc-max").textContent = `${fmt(max)} ha`;
+  // de piña verde a piña madura: mas hectareas, fruta mas amarilla
+  const rampa = (v) => {
+    if (v <= 0) return null;
+    const x = Math.sqrt(v / max), stops = [[46, 94, 71], [156, 197, 107], [245, 197, 66]];
     const [a, b, k] = x < 0.5 ? [stops[0], stops[1], x * 2] : [stops[1], stops[2], (x - 0.5) * 2];
     return `rgb(${a.map((c, i) => Math.round(c + (b[i] - c) * k)).join(",")})`;
   };
-  let year = 2019;
-  const layer = L.geoJSON(geo, {
-    style: (f) => ({ weight: 0.6, color: "#ffffff", fillOpacity: 0.85, fillColor: ramp(f.properties[`ha_${year}`] || 0) }),
-    onEachFeature: (f, l) => l.bindTooltip(() => `<b>${f.properties.distrito}</b> (${f.properties.canton})<br>${nf(f.properties[`ha_${year}`] || 0)} ha en ${year}`),
-  }).addTo(map);
-  map.fitBounds(layer.getBounds(), { padding: [10, 10] });
-  const yearsEl = document.getElementById("years");
-  yearsEl.innerHTML = years.map((y) => `<button type="button" aria-pressed="${y === year}">${y}</button>`).join("");
-  yearsEl.addEventListener("click", (e) => {
-    if (e.target.tagName !== "BUTTON") return;
-    year = Number(e.target.textContent);
-    yearsEl.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b === e.target));
-    layer.setStyle((f) => ({ fillColor: ramp(f.properties[`ha_${year}`] || 0) }));
+  const celdas = h.celdas.map(([cx, cy, a0, a19]) => {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", hexPath(cx, cy, h.r * 0.98)); p.setAttribute("class", "hx");
+    p.dataset.a2000 = a0; p.dataset.a2019 = a19; svg.appendChild(p); return p;
+  });
+  const tip = document.getElementById("tip"), mapa = document.getElementById("mapa");
+  let anio = 2019;
+  const pintar = () => {
+    celdas.forEach((p) => {
+      const v = Number(p.dataset[`a${anio}`]), c = rampa(v);
+      p.style.fill = c || "transparent"; p.style.opacity = c ? 1 : 0;
+    });
+    document.getElementById("h-cifra").textContent = fmt(area[anio]);
+    document.getElementById("h-nota").textContent = anio === 2019
+      ? `En 2019 el ${fmt(t.huetar_norte_pct * 100, 1)} % del área estaba en la región Huetar Norte.`
+      : `En 2000 había ${fmt(area[2000])} ha. Diecinueve años después, ${fmt(area[2019] / area[2000], 1)} veces más.`;
+  };
+  pintar();
+  document.querySelectorAll(".toggle button").forEach((b) => b.addEventListener("click", () => {
+    anio = Number(b.dataset.anio);
+    document.querySelectorAll(".toggle button").forEach((o) => o.setAttribute("aria-pressed", o === b));
+    pintar();
+  }));
+  svg.addEventListener("pointermove", (e) => {
+    const p = e.target.closest(".hx"); if (!p || p.style.opacity === "0") { tip.style.opacity = 0; return; }
+    const r = mapa.getBoundingClientRect();
+    tip.textContent = `${fmt(Number(p.dataset[`a${anio}`]))} ha de piña en ${anio}`;
+    tip.style.left = `${e.clientX - r.left}px`; tip.style.top = `${e.clientY - r.top}px`; tip.style.opacity = 1;
+  });
+  svg.addEventListener("pointerleave", () => { tip.style.opacity = 0; });
+
+  // Sello de exportacion
+  const cuota = m.cuota_mundial.at(-1);
+  document.getElementById("sello").insertAdjacentHTML("beforeend",
+    `<span>Exportado en ${m.ultimo_anio}: <b>USD ${fmt(m.usd_ultimo / 1e6)} M</b></span>` +
+    `<span>Variación anual: <b>${m.var_ultimo >= 0 ? "+" : ""}${fmt(m.var_ultimo * 100, 1)} %</b></span>` +
+    `<span>Cuota mundial: <b>${fmt(cuota.cuota * 100, 1)} %</b></span>` +
+    `<span>Destino principal: <b>${m.destinos[0].pais}</b></span>`);
+
+  // Barras -----------------------------------------------------------------------------
+  const barras = (el, filas, etiqueta, valor, texto, marca = () => false) => {
+    const top = Math.max(...filas.map(valor));
+    el.innerHTML = filas.map((f) => `<li class="${marca(f) ? "marca" : ""}"><span>${etiqueta(f)}</span>` +
+      `<span class="pista"><span class="valor" style="width:${(100 * valor(f)) / top}%"></span></span>` +
+      `<span class="n">${texto(f)}</span></li>`).join("");
+  };
+  document.getElementById("t-destinos").textContent = `Destinos en ${m.ultimo_anio}, % del valor`;
+  barras(document.getElementById("destinos"), m.destinos, (f) => f.pais, (f) => f.usd, (f) => `${fmt(f.pct * 100, 1)} %`);
+  barras(document.getElementById("distritos"), t.top_distritos, (f) => f.distrito, (f) => f.ha, (f) => fmt(f.ha),
+    (f) => f.distrito === "Pocosol");
+  const poco = Object.fromEntries(d.pocosol.map((p) => [p.anio, p.ha]));
+  document.getElementById("poco-cifra").textContent = `${fmt(poco[2000])} → ${fmt(poco[2019])} ha`;
+  document.getElementById("poco-texto").textContent =
+    "Pocosol, en San Carlos, entre 2000 y 2019. Es uno de los distritos donde la piña más creció.";
+
+  // Graficos ----------------------------------------------------------------------------
+  // Chart.js mide los ejes al crearse: sin esperar la fuente, las etiquetas quedan cortadas.
+  await document.fonts.ready;
+  Chart.defaults.font.family = css("--texto");
+  Chart.defaults.color = css("--niebla");
+  Chart.defaults.borderColor = css("--linea");
+  Chart.defaults.animation = false;
+  const base = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+                 scales: { x: { grid: { display: false } } } };
+  const verde = matchMedia("(prefers-color-scheme: dark)").matches ? css("--hoja") : css("--corona");
+  new Chart(document.getElementById("g-export"), {
+    type: "line",
+    data: { labels: m.serie.map((s) => s.anio), datasets: [{ data: m.serie.map((s) => s.usd / 1e6),
+      borderColor: verde, borderWidth: 2.5, pointRadius: 0, tension: 0.2, fill: true,
+      backgroundColor: "rgba(245,197,66,.18)" }] },
+    options: { ...base, plugins: { ...base.plugins, tooltip: { callbacks: { label: (c) => `USD ${fmt(c.parsed.y)} M` } } } },
+  });
+  new Chart(document.getElementById("g-area"), {
+    type: "bar",
+    data: { labels: t.serie.map((s) => s.anio), datasets: [{ data: t.serie.map((s) => s.ha), backgroundColor: verde, borderRadius: 3 }] },
+    options: { ...base, plugins: { ...base.plugins, tooltip: { callbacks: { label: (c) => `${fmt(c.parsed.y)} ha` } } } },
+  });
+  const loss = d.sostenibilidad.perdida_por_periodo;
+  new Chart(document.getElementById("g-bosque"), {
+    type: "bar",
+    data: { labels: loss.map((p) => p.periodo), datasets: [{ data: loss.map((p) => p.ha), backgroundColor: css("--oxido"), borderRadius: 3 }] },
+    options: { ...base, plugins: { ...base.plugins, tooltip: { callbacks: { label: (c) => `${fmt(c.parsed.y)} ha` } } } },
+  });
+  const rend = d.productividad.rendimiento.filter((r) => r.anio >= 1990);
+  new Chart(document.getElementById("g-rend"), {
+    type: "line",
+    data: { labels: rend.map((r) => r.anio), datasets: [
+      { label: "Costa Rica", data: rend.map((r) => r.cr), borderColor: verde, borderWidth: 2.5, pointRadius: 0 },
+      { label: "Mundo", data: rend.map((r) => r.mundo), borderColor: "#D9A621", borderWidth: 2.5, pointRadius: 0 },
+    ] },
+    options: { ...base, plugins: { legend: { display: true, position: "top", align: "start", labels: { boxWidth: 12, boxHeight: 2 } },
+      tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${fmt(c.parsed.y, 1)} t/ha` } } } },
   });
 
-  // Ampliar capturas
-  const dlg = document.getElementById("zoom");
-  document.querySelectorAll(".shots img").forEach((img) => img.addEventListener("click", () => {
-    dlg.querySelector("img").src = img.src; dlg.querySelector("img").alt = img.alt; dlg.showModal();
+  // Pestanas del reporte ----------------------------------------------------------------
+  const img = document.getElementById("pantalla"), pie = document.getElementById("pie");
+  const tabs = [...document.querySelectorAll("#pestanas button")];
+  tabs.forEach((b) => b.addEventListener("click", () => {
+    tabs.forEach((o) => o.setAttribute("aria-selected", o === b));
+    img.src = `img/${b.dataset.img}.jpg`; img.alt = `Página ${b.firstChild.textContent} del reporte de Power BI`;
+    pie.textContent = b.dataset.pie;
   }));
-  dlg.addEventListener("click", () => dlg.close());
+  tabs.forEach((b) => { new Image().src = `img/${b.dataset.img}.jpg`; });
 })();
 </script>
 </body>

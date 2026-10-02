@@ -139,6 +139,28 @@ def build_comtrade() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     return export_cr, export_world, countries
 
 
+# Comtrade y FAOSTAT publican los nombres en ingles; el reporte va en espanol.
+NOMBRES_AJUSTADOS = {"RUS": "Rusia", "CIV": "Costa de Marfil", "USA": "Estados Unidos",
+                     "TWN": "Taiwán", "PRK": "Corea del Norte", "IRN": "Irán", "SYR": "Siria", "SCG": "Serbia y Montenegro"}
+
+
+def spanish_names(paises: pd.DataFrame) -> pd.Series:
+    import gettext
+    import pycountry
+    es = gettext.translation("iso3166-1", pycountry.LOCALES_DIR, languages=["es"])
+
+    def name(row) -> str:
+        iso3 = row["iso3"] if isinstance(row["iso3"], str) else None
+        if iso3 in NOMBRES_AJUSTADOS:
+            return NOMBRES_AJUSTADOS[iso3]
+        country = pycountry.countries.get(alpha_3=iso3) if iso3 else None
+        if country is None:
+            return row["pais"]
+        return es.gettext(getattr(country, "common_name", country.name))
+
+    return paises.apply(name, axis=1)
+
+
 def build_faostat() -> pd.DataFrame:
     f = pd.read_csv(RAW / "faostat" / "faostat_pina.csv")
     f = f[f["Area Code (M49)"].str.lstrip("'").str.isdigit()]
@@ -166,6 +188,8 @@ def main():
         extra = pd.DataFrame({"cod_pais": sorted(missing)})
         extra["pais"] = extra["cod_pais"].map(names)
         dim_pais = pd.concat([dim_pais, extra])
+
+    dim_pais["pais"] = spanish_names(dim_pais)
 
     # Agregados FAO (Mundo, continentes, regiones): Area Code >= 5000. Se marcan para que
     # el tablero no los sume ni los rankee como si fueran paises.

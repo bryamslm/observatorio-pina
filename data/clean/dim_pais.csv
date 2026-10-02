@@ -1,204 +1,204 @@
 cod_pais,pais,iso3,es_agregado
-4,Afghanistan,AFG,0
+4,Afganistán,AFG,0
 8,Albania,ALB,0
 12,Algeria,DZA,0
-16,American Samoa,ASM,0
+16,Samoa Estadounidense,ASM,0
 20,Andorra,AND,0
 24,Angola,AGO,0
-28,Antigua and Barbuda,ATG,0
+28,Antigua y Barbuda,ATG,0
 899,"Areas, nes",_X ,0
 32,Argentina,ARG,0
 51,Armenia,ARM,0
 533,Aruba,ABW,0
 36,Australia,AUS,0
 40,Austria,AUT,0
-31,Azerbaijan,AZE,0
+31,Azerbaiyán,AZE,0
 44,Bahamas,BHS,0
-48,Bahrain,BHR,0
-50,Bangladesh,BGD,0
+48,Baréin,BHR,0
+50,Bangladés,BGD,0
 52,Barbados,BRB,0
-112,Belarus,BLR,0
-56,Belgium,BEL,0
-84,Belize,BLZ,0
-204,Benin,BEN,0
-60,Bermuda,BMU,0
-64,Bhutan,BTN,0
-68,Bolivia (Plurinational State of),BOL,0
-70,Bosnia Herzegovina,BIH,0
-72,Botswana,BWA,0
-76,Brazil,BRA,0
+112,Bielorrusia,BLR,0
+56,Bélgica,BEL,0
+84,Belice,BLZ,0
+204,Benín,BEN,0
+60,Islas Bermudas,BMU,0
+64,Bután,BTN,0
+68,Bolivia,BOL,0
+70,Bosnia y Herzegovina,BIH,0
+72,Botsuana,BWA,0
+76,Brasil,BRA,0
 96,Brunei Darussalam,BRN,0
 100,Bulgaria,BGR,0
-854,Burkina Faso,BFA,0
+854,Burquina Faso,BFA,0
 108,Burundi,BDI,0
 132,Cabo Verde,CPV,0
-116,Cambodia,KHM,0
-120,Cameroon,CMR,0
-124,Canada,CAN,0
-140,Central African Rep.,CAF,0
+116,Camboya,KHM,0
+120,Camerún,CMR,0
+124,Canadá,CAN,0
+140,República Centroafricana,CAF,0
 148,Chad,TCD,0
 152,Chile,CHL,0
 156,China,CHN,0
-344,"China, Hong Kong SAR",HKG,0
-446,"China, Macao SAR",MAC,0
+344,Hong Kong,HKG,0
+446,Macao,MAC,0
 170,Colombia,COL,0
 178,Congo,COG,0
-184,Cook Isds,COK,0
+184,Islas Cook,COK,0
 188,Costa Rica,CRI,0
-384,Côte d'Ivoire,CIV,0
-191,Croatia,HRV,0
+384,Costa de Marfil,CIV,0
+191,Croacia,HRV,0
 192,Cuba,CUB,0
-531,Curaçao,CUW,0
-196,Cyprus,CYP,0
-203,Czechia,CZE,0
-180,Dem. Rep. of the Congo,COD,0
-208,Denmark,DNK,0
+531,Curazao,CUW,0
+196,Chipre,CYP,0
+203,Chequia,CZE,0
+180,"Congo, República Democrática del",COD,0
+208,Dinamarca,DNK,0
 212,Dominica,DMA,0
-214,Dominican Rep.,DOM,0
+214,República Dominicana,DOM,0
 218,Ecuador,ECU,0
-818,Egypt,EGY,0
+818,Egipto,EGY,0
 222,El Salvador,SLV,0
 233,Estonia,EST,0
-748,Eswatini,SWZ,0
-231,Ethiopia,ETH,0
-230,Ethiopia,ETH,0
-242,Fiji,FJI,0
-246,Finland,FIN,0
-251,France,FRA,0
+748,Esuatini,SWZ,0
+231,Etiopía,ETH,0
+230,Etiopía,ETH,0
+242,Fiyi,FJI,0
+246,Finlandia,FIN,0
+251,Francia,FRA,0
 838,Free Zones,X2 ,0
-254,French Guiana (Overseas France),GUF,0
-258,French Polynesia,PYF,0
-266,Gabon,GAB,0
+254,Guayana Francesa,GUF,0
+258,Polinesia Francesa,PYF,0
+266,Gabón,GAB,0
 268,Georgia,GEO,0
-276,Germany,DEU,0
+276,Alemania,DEU,0
 288,Ghana,GHA,0
-300,Greece,GRC,0
-308,Grenada,GRD,0
-312,Guadeloupe (Overseas France),GLP,0
+300,Grecia,GRC,0
+308,Granada,GRD,0
+312,Guadalupe,GLP,0
 320,Guatemala,GTM,0
 324,Guinea,GIN,0
-624,Guinea-Bissau,GNB,0
+624,Guinea-Bisáu,GNB,0
 328,Guyana,GUY,0
-332,Haiti,HTI,0
-336,Holy See (Vatican City State),VAT,0
+332,Haití,HTI,0
+336,Santa Sede (Ciudad Estado del Vaticano),VAT,0
 340,Honduras,HND,0
-348,Hungary,HUN,0
-352,Iceland,ISL,0
+348,Hungría,HUN,0
+352,Islandia,ISL,0
 699,India,IND,0
 356,India,IND,0
 360,Indonesia,IDN,0
-364,Iran,IRN,0
-372,Ireland,IRL,0
+364,Irán,IRN,0
+372,Irlanda,IRL,0
 376,Israel,ISR,0
-380,Italy,ITA,0
+380,Italia,ITA,0
 388,Jamaica,JAM,0
-392,Japan,JPN,0
-400,Jordan,JOR,0
-398,Kazakhstan,KAZ,0
-404,Kenya,KEN,0
+392,Japón,JPN,0
+400,Jordania,JOR,0
+398,Kazajistán,KAZ,0
+404,Kenia,KEN,0
 414,Kuwait,KWT,0
-417,Kyrgyzstan,KGZ,0
-418,Lao People's Dem. Rep.,LAO,0
-428,Latvia,LVA,0
-422,Lebanon,LBN,0
-426,Lesotho,LSO,0
+417,Kirguistán,KGZ,0
+418,Laos,LAO,0
+428,Letonia,LVA,0
+422,Líbano,LBN,0
+426,Lesoto,LSO,0
 430,Liberia,LBR,0
-434,Libya,LBY,0
-440,Lithuania,LTU,0
-442,Luxembourg,LUX,0
+434,Libia,LBY,0
+440,Lituania,LTU,0
+442,Luxemburgo,LUX,0
 450,Madagascar,MDG,0
-454,Malawi,MWI,0
-458,Malaysia,MYS,0
-466,Mali,MLI,0
+454,Malaui,MWI,0
+458,Malasia,MYS,0
+466,Malí,MLI,0
 470,Malta,MLT,0
-474,Martinique (Overseas France),MTQ,0
-480,Mauritius,MUS,0
-175,Mayotte (Overseas France),MYT,0
-484,Mexico,MEX,0
+474,Martinica,MTQ,0
+480,Mauricio,MUS,0
+175,Mayotte,MYT,0
+484,México,MEX,0
 499,Montenegro,MNE,0
-504,Morocco,MAR,0
+504,Marruecos,MAR,0
 508,Mozambique,MOZ,0
-104,Myanmar,MMR,0
+104,Birmania,MMR,0
 516,Namibia,NAM,0
 524,Nepal,NPL,0
-528,Netherlands,NLD,0
+528,Países Bajos,NLD,0
 530,Netherlands Antilles,ANT,0
-540,New Caledonia,NCL,0
-554,New Zealand,NZL,0
+540,Nueva Caledonia,NCL,0
+554,Nueva Zelanda,NZL,0
 558,Nicaragua,NIC,0
 562,Niger,NER,0
 566,Nigeria,NGA,0
-807,North Macedonia,MKD,0
-579,Norway,NOR,0
-512,Oman,OMN,0
+807,Macedonia del Norte,MKD,0
+579,Noruega,NOR,0
+512,Omán,OMN,0
 490,"Other Asia, nes",S19,0
-586,Pakistan,PAK,0
-591,Panama,PAN,0
-598,Papua New Guinea,PNG,0
+586,Pakistán,PAK,0
+591,Panamá,PAN,0
+598,Papúa Nueva Guinea,PNG,0
 600,Paraguay,PRY,0
-604,Peru,PER,0
-608,Philippines,PHL,0
-616,Poland,POL,0
+604,Perú,PER,0
+608,Filipinas,PHL,0
+616,Polonia,POL,0
 620,Portugal,PRT,0
-630,Puerto Rico ,PRI,0
-634,Qatar,QAT,0
-410,Rep. of Korea,KOR,0
-498,Rep. of Moldova,MDA,0
-638,Réunion (Overseas France),REU,0
-642,Romania,ROU,0
-643,Russian Federation,RUS,0
-646,Rwanda,RWA,0
-659,Saint Kitts and Nevis,KNA,0
-662,Saint Lucia,LCA,0
-534,Saint Maarten,SXM,0
-670,Saint Vincent and the Grenadines,VCT,0
+630,Puerto Rico,PRI,0
+634,Catar,QAT,0
+410,Corea del Sur,KOR,0
+498,Moldavia,MDA,0
+638,Reunión,REU,0
+642,Rumanía,ROU,0
+643,Rusia,RUS,0
+646,Ruanda,RWA,0
+659,San Cristóbal y Nieves,KNA,0
+662,Santa Lucía,LCA,0
+534,Isla de San Martín (zona holandesa),SXM,0
+670,San Vicente y las Granadinas,VCT,0
 882,Samoa,WSM,0
-678,Sao Tome and Principe,STP,0
-682,Saudi Arabia,SAU,0
+678,Santo Tomé y Príncipe,STP,0
+682,Arabia Saudí,SAU,0
 686,Senegal,SEN,0
 688,Serbia,SRB,0
-891,Serbia and Montenegro,SCG,0
+891,Serbia y Montenegro,SCG,0
 690,Seychelles,SYC,0
-702,Singapore,SGP,0
-703,Slovakia,SVK,0
-705,Slovenia,SVN,0
-90,Solomon Isds,SLB,0
-710,South Africa,ZAF,0
-728,South Sudan,SSD,0
-724,Spain,ESP,0
+702,Singapur,SGP,0
+703,Eslovaquia,SVK,0
+705,Eslovenia,SVN,0
+90,Islas Salomón,SLB,0
+710,Sudáfrica,ZAF,0
+728,Sudán del Sur,SSD,0
+724,España,ESP,0
 144,Sri Lanka,LKA,0
-275,State of Palestine,PSE,0
-729,Sudan,SDN,0
-736,Sudan,SDN,0
-740,Suriname,SUR,0
-752,Sweden,SWE,0
-757,Switzerland,CHE,0
-760,Syria,SYR,0
-158,"Taiwan, Province of China",TWN,0
-762,Tajikistan,TJK,0
-764,Thailand,THA,0
-626,Timor-Leste,TLS,0
+275,"Palestina, Estado de",PSE,0
+729,Sudán,SDN,0
+736,Sudán,SDN,0
+740,Surinám,SUR,0
+752,Suecia,SWE,0
+757,Suiza,CHE,0
+760,Siria,SYR,0
+158,Taiwán,TWN,0
+762,Tayikistán,TJK,0
+764,Tailandia,THA,0
+626,Timor Oriental,TLS,0
 768,Togo,TGO,0
 776,Tonga,TON,0
-780,Trinidad and Tobago,TTO,0
-788,Tunisia,TUN,0
-792,Türkiye,TUR,0
+780,Trinidad y Tobago,TTO,0
+788,Tunez,TUN,0
+792,Turquía,TUR,0
 800,Uganda,UGA,0
-804,Ukraine,UKR,0
-784,United Arab Emirates,ARE,0
-826,United Kingdom,GBR,0
-834,United Rep. of Tanzania,TZA,0
-581,United States Minor Outlying Islands,UMI,0
-840,United States of America,USA,0
+804,Ucrania,UKR,0
+784,Emiratos Árabes Unidos,ARE,0
+826,Reino Unido,GBR,0
+834,Tanzania,TZA,0
+581,Islas Ultramarinas Menores de Estados Unidos,UMI,0
+840,Estados Unidos,USA,0
 858,Uruguay,URY,0
-842,USA,USA,0
-860,Uzbekistan,UZB,0
+842,Estados Unidos,USA,0
+860,Uzbekistán,UZB,0
 548,Vanuatu,VUT,0
 862,Venezuela,VEN,0
-704,Viet Nam,VNM,0
+704,Vietnam,VNM,0
 887,Yemen,YEM,0
 894,Zambia,ZMB,0
-716,Zimbabwe,ZWE,0
+716,Zimbabue,ZWE,0
 1,World,,1
 2,Africa,,1
 5,South America,,1

@@ -4,3 +4,4 @@ geopandas
 pyogrio
 pymssql
 numpy
+pycountry
