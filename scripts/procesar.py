@@ -165,6 +165,12 @@ def main():
         extra["pais"] = extra["cod_pais"].map(names)
         dim_pais = pd.concat([dim_pais, extra])
 
+    # Agregados FAO (Mundo, continentes, regiones): Area Code >= 5000. Se marcan para que
+    # el tablero no los sume ni los rankee como si fueran paises.
+    fao = pd.read_csv(RAW / "faostat" / "faostat_pina.csv")
+    aggregates = set(fao.loc[fao["Area Code"] >= 5000, "Area Code (M49)"].str.lstrip("'").astype(int))
+    dim_pais["es_agregado"] = dim_pais["cod_pais"].isin(aggregates).astype(int)
+
     years = range(int(production["anio"].min()), int(max(export_world["anio"].max(), production["anio"].max())) + 1)
     dim_anio = pd.DataFrame({"anio": list(years)})
 

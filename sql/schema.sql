@@ -9,9 +9,12 @@ begin
   select @sql += N'drop view dw.' + quotename(name) + N';' from sys.views where schema_id = schema_id('dw');
   exec sp_executesql @sql;
   set @sql = N'';
-  -- hechos antes que dimensiones por las llaves foraneas
-  select @sql += N'drop table dw.' + quotename(name) + N';' from sys.tables
-  where schema_id = schema_id('dw') order by case when name like 'fact%' then 0 else 1 end;
+  -- primero las llaves foraneas: asi el orden de borrado de tablas no importa
+  select @sql += N'alter table dw.' + quotename(object_name(parent_object_id)) + N' drop constraint ' + quotename(name) + N';'
+  from sys.foreign_keys where schema_id = schema_id('dw');
+  exec sp_executesql @sql;
+  set @sql = N'';
+  select @sql += N'drop table dw.' + quotename(name) + N';' from sys.tables where schema_id = schema_id('dw');
   exec sp_executesql @sql;
   drop schema dw;
 end
@@ -39,7 +42,8 @@ create table dw.dim_distrito (
 create table dw.dim_pais (
   cod_pais int           not null primary key,          -- M49
   pais     nvarchar(120) not null,
-  iso3     nvarchar(3)   null
+  iso3     nvarchar(3)   null,
+  es_agregado bit        not null   -- 1 = Mundo/continente/region FAO, no un pais
 );
 
 -- Hechos ---------------------------------------------------------------------

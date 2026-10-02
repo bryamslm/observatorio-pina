@@ -7,8 +7,12 @@ begin
   select @sql += N'drop view ops.' + quotename(name) + N';' from sys.views where schema_id = schema_id('ops');
   exec sp_executesql @sql;
   set @sql = N'';
-  select @sql += N'drop table ops.' + quotename(name) + N';' from sys.tables
-  where schema_id = schema_id('ops') order by case when name like 'fact%' then 0 else 1 end;
+  -- primero las llaves foraneas: asi el orden de borrado de tablas no importa
+  select @sql += N'alter table ops.' + quotename(object_name(parent_object_id)) + N' drop constraint ' + quotename(name) + N';'
+  from sys.foreign_keys where schema_id = schema_id('ops');
+  exec sp_executesql @sql;
+  set @sql = N'';
+  select @sql += N'drop table ops.' + quotename(name) + N';' from sys.tables where schema_id = schema_id('ops');
   exec sp_executesql @sql;
   drop schema ops;
 end
