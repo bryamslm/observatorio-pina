@@ -123,4 +123,4 @@ docs/      arquitectura · calidad de datos · capturas
 
 ---
 
-Hecho por [Bryam López](https://bryamlopez.com), ingeniero en Computación (TEC).
+Hecho por [Bryam López](https://linkedin.com/in/bryamslm), ingeniero en Computación (TEC).
