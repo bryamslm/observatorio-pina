@@ -17,8 +17,11 @@ ROOT = Path(__file__).resolve().parent.parent
 CLEAN = ROOT / "data" / "clean"
 
 # Orden de carga: dimensiones antes que hechos por las llaves foraneas.
-TABLES = ["dim_anio", "dim_distrito", "dim_pais", "fact_area_pina", "fact_cambio_cobertura",
-          "fact_export_cr", "fact_export_mundo", "fact_produccion"]
+TABLES = [("dw", t, t) for t in ["dim_anio", "dim_distrito", "dim_pais", "fact_area_pina",
+          "fact_cambio_cobertura", "fact_export_cr", "fact_export_mundo", "fact_produccion"]]
+# Operacion simulada: (esquema, tabla, csv)
+TABLES += [("ops", t, f"ops_{t}") for t in ["dim_fecha", "dim_bloque", "fact_cosecha",
+           "fact_labores", "fact_ventas"]] + [("ops", "parametros", "ops_parametros")]
 
 
 def env() -> dict:
@@ -46,13 +49,14 @@ def main():
     e = env()
     ensure_database(e)
     with connect(e, "observatorio_etl", e["MSSQL_ETL_PASSWORD"], e["MSSQL_DB"]) as conn, conn.cursor() as cur:
-        script = (ROOT / "sql" / "schema.sql").read_text(encoding="utf-8")
-        for batch in re.split(r"^\s*GO\s*$", script, flags=re.MULTILINE):
-            if batch.strip():
-                cur.execute(batch)
+        for name in ("schema.sql", "schema_ops.sql"):
+            script = (ROOT / "sql" / name).read_text(encoding="utf-8")
+            for batch in re.split(r"^\s*GO\s*$", script, flags=re.MULTILINE):
+                if batch.strip():
+                    cur.execute(batch)
 
-        for table in TABLES:
-            df = pd.read_csv(CLEAN / f"{table}.csv")
+        for schema, table, csv in TABLES:
+            df = pd.read_csv(CLEAN / f"{csv}.csv")
             cols = ", ".join(df.columns)
             row_marks = "(" + ", ".join(["%s"] * len(df.columns)) + ")"
             rows = [tuple(None if pd.isna(v) else (v.item() if hasattr(v, "item") else v) for v in r)
@@ -62,9 +66,9 @@ def main():
             chunk = min(1000, 2000 // len(df.columns))
             for i in range(0, len(rows), chunk):
                 part = rows[i:i + chunk]
-                cur.execute(f"insert into dw.{table} ({cols}) values " + ", ".join([row_marks] * len(part)),
+                cur.execute(f"insert into {schema}.{table} ({cols}) values " + ", ".join([row_marks] * len(part)),
                             tuple(v for r in part for v in r))
-            print(f"dw.{table}: {len(df)} filas")
+            print(f"{schema}.{table}: {len(df)} filas")
 
         # Mismos controles que docs/arquitectura.md, ahora contra la base.
         checks = {
